@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
-    <ProjectGuid>{29d2c9b6-34b6-41b3-933a-6f4a78bfb75f}</ProjectGuid>
+    <ProjectGuid>{9ca79593-7e02-4227-af72-30084ed78704}</ProjectGuid>
     <RootNamespace>Muzeu</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
@@ -70,10 +70,6 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>C:\Users\palat\OneDrive\Documente\Desktop\A2S1\G3D\Proiect-G3D\ExternalProiect\glfw-3.4.bin.WIN64\include\GLFW;C:\Users\palat\OneDrive\Documente\Desktop\A2S1\G3D\Proiect-G3D\ExternalProiect\glew-2.1.0\include;C:\Users\palat\OneDrive\Documente\Desktop\A2S1\G3D\Proiect-G3D\ExternalProiect\glm;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Users\palat\OneDrive\Documente\Desktop\A2S1\G3D\Proiect-G3D\ExternalProiect\glew-2.1.0\lib\Release\x64;C:\Users\palat\OneDrive\Documente\Desktop\A2S1\G3D\Proiect-G3D\ExternalProiect\glfw-3.4.bin.WIN64\lib-vc2022;$(LibraryPath)</LibraryPath>
-  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
