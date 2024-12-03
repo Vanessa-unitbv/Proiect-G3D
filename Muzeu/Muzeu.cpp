@@ -1,5 +1,3 @@
-// ViewOBJModel.cpp : This file contains the 'main' function. Program execution begins and ends there.
-
 #include <Windows.h>
 #include <locale>
 #include <codecvt>
@@ -294,7 +292,7 @@ int main()
 	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
 	// glfw window creation
-	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Lab 7", NULL, NULL);
+	GLFWwindow* window = glfwCreateWindow(SCR_WIDTH, SCR_HEIGHT, "Muzeul de Istorie din Brasov", NULL, NULL);
 	if (window == NULL) {
 		std::cout << "Failed to create GLFW window" << std::endl;
 		glfwTerminate();
@@ -386,7 +384,7 @@ int main()
 	glEnableVertexAttribArray(0);
 
 	// Create camera
-	pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 0.0, 3.0));
+	pCamera = new Camera(SCR_WIDTH, SCR_HEIGHT, glm::vec3(0.0, 4.0, 3.0));
 
 	glm::vec3 lightPos(0.0f, 2.0f, 1.0f);
 
@@ -404,9 +402,16 @@ int main()
 	Shader lampShader((currentPath + "\\Shaders\\Lamp.vs").c_str(), (currentPath + "\\Shaders\\Lamp.fs").c_str());
 
 
-
+	//cale floor
 	std::string floorObjFileName = (currentPath + "\\Models\\Floor\\Floor.obj");
 	Model floorObjModel(floorObjFileName, false);
+
+	//cale wall
+	std::string wallObjFileName = (currentPath + "\\Models\\Wall\\ImageToStl.com_grey_structured_wall_facade.obj");
+	Model wall1ObjModel(wallObjFileName, false);
+	Model wall2ObjModel(wallObjFileName, false);
+	Model wall3ObjModel(wallObjFileName, false);
+	Model wall4ObjModel(wallObjFileName, false);
 
 	// render loop
 	while (!glfwWindowShouldClose(window)) {
@@ -445,9 +450,43 @@ int main()
 
 
 		//draw Floor
-		glm::mat4 floorModel = glm::scale(glm::mat4(1.0), glm::vec3(10.f, 1.0f, 10.0f));
+		glm::mat4 floorModel = glm::scale(glm::mat4(1.0), glm::vec3(200.f, 1.0f, 150.0f));
 		lightingWithTextureShader.setMat4("model", floorModel);
 		floorObjModel.Draw(lightingWithTextureShader);
+
+		//draw wall1
+		glm::mat4 wall1Model = glm::scale(glm::mat4(1.0), glm::vec3(8530.f, 5000.0f, 600.0f));
+		glm::mat4 transWall1 = glm::mat4(1.0f);
+		transWall1 = glm::translate(transWall1, glm::vec3(-10.0f, -15.3f, 83.0f));
+		wall1Model = transWall1 * wall1Model;
+		lightingWithTextureShader.setMat4("model", wall1Model);
+		wall1ObjModel.Draw(lightingWithTextureShader);
+
+		//draw wall2
+		glm::mat4 wall2Model = glm::scale(glm::mat4(1.0), glm::vec3(8530.f, 5000.0f, 600.0f));
+		glm::mat4 transWall2 = glm::mat4(1.0f);
+		transWall2 = glm::translate(transWall2, glm::vec3(-10.0f, -15.3f, -87.2f));
+		wall2Model = transWall2 * wall2Model;
+		lightingWithTextureShader.setMat4("model", wall2Model);
+		wall2ObjModel.Draw(lightingWithTextureShader);
+
+		//draw wall3
+		glm::mat4 wall3Model = glm::scale(glm::mat4(1.0), glm::vec3(4310.0f, 5000.0f, 8540.0f));
+		glm::mat4 transWall3 = glm::mat4(1.0f);
+		transWall3 = glm::translate(transWall3, glm::vec3(162.0f, -15.3f, -3.2f));
+		glm::mat4 rotateWall3 = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		wall3Model = transWall3 * rotateWall3 * wall3Model;
+		lightingWithTextureShader.setMat4("model", wall3Model);
+		wall3ObjModel.Draw(lightingWithTextureShader);
+
+		//draw wall4
+		glm::mat4 wall4Model = glm::scale(glm::mat4(1.0), glm::vec3(4310.0f, 5000.0f, 8540.0f));
+		glm::mat4 transWall4 = glm::mat4(1.0f);
+		transWall4 = glm::translate(transWall4, glm::vec3(-176.0f, -15.3f, -3.2f));
+		glm::mat4 rotateWall4 = glm::rotate(glm::mat4(1.0f), glm::radians(90.0f), glm::vec3(0.0f, 1.0f, 0.0f));
+		wall4Model = transWall4 * rotateWall4 * wall4Model;
+		lightingWithTextureShader.setMat4("model", wall4Model);
+		wall4ObjModel.Draw(lightingWithTextureShader);
 
 		// also draw the lamp object
 		lampShader.use();
