@@ -1,1 +1,0 @@
-# Proiect-G3D
