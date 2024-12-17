@@ -186,26 +186,50 @@ glm::vec3 cameraPos = glm::vec3(0.0f, 3.0f, 0.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 float cameraSpeed = 0.002f; 
+bool isInsideRoom(const glm::vec3& position) {
+    glm::vec2 corner1(4.80363f, 7.60156f);
+    glm::vec2 corner2(7.62679f, 4.68736f);
+    glm::vec2 corner3(-4.28256f, -7.19005f); 
+    glm::vec2 corner4(-7.2052f, -4.29742f);
+    glm::vec2 point(position.x, position.z);
+    auto lineEquation = [](const glm::vec2& p1, const glm::vec2& p2, const glm::vec2& point) {
+        float a = p2.y - p1.y;
+        float b = p1.x - p2.x;
+        float c = p2.x * p1.y - p1.x * p2.y;
+        return a * point.x + b * point.y + c;
+        };
+    bool side1 = lineEquation(corner1, corner2, point) >= 0;
+    bool side2 = lineEquation(corner2, corner3, point) >= 0;
+    bool side3 = lineEquation(corner3, corner4, point) >= 0;
+    bool side4 = lineEquation(corner4, corner1, point) >= 0; 
+    return side1 && side2 && side3 && side4;
+}
+
+
+
 
 void processInput(GLFWwindow* window) {
     glm::vec3 newPos = cameraPos;
 
-    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
+    if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS)
         newPos += cameraSpeed * cameraFront;
-    }
-    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
+    if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS)
         newPos -= cameraSpeed * cameraFront;
-    }
-    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
+    if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS)
         newPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
-    }
-    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
+    if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
         newPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
+
+    newPos.y = 3.0f;
+
+    if (isInsideRoom(newPos)) {
+        cameraPos = newPos;
     }
+    /*else {
+        std::cout << "Coliziune detectată! Poziție invalidă.\n";
+    }*/
 
-    newPos.y = cameraPos.y;
-
-    cameraPos = newPos;
+    //std::cout << "Camera Position: (" << cameraPos.x << ", " << cameraPos.y << ", " << cameraPos.z << ")\n"; Scoateti comment-ul daca cumva aveti nevoie sa vedeti pozitia unde va aflati
 }
 
 float lastX = 400.0f, lastY = 300.0f;
