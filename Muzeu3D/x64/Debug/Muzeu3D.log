@@ -1,10 +1,8 @@
-﻿  tiny_obj_loader.cpp
-  Muzeu3D.cpp
-C:\Z - Paul\A2S1\Muzeu3D\Muzeu3D\Muzeu3D.cpp(210,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Z - Paul\A2S1\Muzeu3D\Muzeu3D\Muzeu3D.cpp(211,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Z - Paul\A2S1\Muzeu3D\Muzeu3D\Muzeu3D.cpp(215,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Z - Paul\A2S1\Muzeu3D\Muzeu3D\Muzeu3D.cpp(216,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Z - Paul\A2S1\Muzeu3D\Muzeu3D\Muzeu3D.cpp(217,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Z - Paul\A2S1\Muzeu3D\Muzeu3D\Muzeu3D.cpp(218,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  Generating Code...
-  Muzeu3D.vcxproj -> C:\Z - Paul\A2S1\Muzeu3D\x64\Debug\Muzeu3D.exe
+﻿  Muzeu3D.cpp
+C:\Z - Paul\A2S1\G3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp(218,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Z - Paul\A2S1\G3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp(219,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Z - Paul\A2S1\G3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp(223,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Z - Paul\A2S1\G3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp(224,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Z - Paul\A2S1\G3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp(225,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Z - Paul\A2S1\G3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp(226,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Muzeu3D.vcxproj -> C:\Z - Paul\A2S1\G3D\Proiect-G3D\x64\Debug\Muzeu3D.exe

@@ -12,10 +12,12 @@
 #include <fstream>
 #include <unordered_map>
 
-const char* vertexShaderPath = "C:/Z - Paul/A2S1/Muzeu3D/Shaders/vertex_shader.glsl";
-const char* fragmentShaderPath = "C:/Z - Paul/A2S1/Muzeu3D/Shaders/fragment_shader.glsl";
-const char* objPath = "C:/Z - Paul/A2S1/Muzeu3D/Models/muzeu.obj";
-const char* mtlBaseDir = "C:/Z - Paul/A2S1/Muzeu3D/Models/";
+
+
+const char* vertexShaderPath = "C:/Z - Paul/A2S1/G3D/Proiect-G3D/Shaders/vertex_shader.glsl";
+const char* fragmentShaderPath = "C:/Z - Paul/A2S1/G3D/Proiect-G3D/Shaders/fragment_shader.glsl";
+const char* objPath = "C:/Z - Paul/A2S1/G3D/Proiect-G3D/Models/muzeu.obj";
+const char* mtlBaseDir = "C:/Z - Paul/A2S1/G3D/Proiect-G3D/Models/";
 
 struct Mesh {
     GLuint VAO, VBO, EBO, textureID;
@@ -180,24 +182,30 @@ std::vector<Mesh> loadOBJ(const char* objFile, const char* baseDir) {
     return meshes;
 }
 
-glm::vec3 cameraPos = glm::vec3(0.0f, 2.0f, 5.0f);
+glm::vec3 cameraPos = glm::vec3(0.0f, 3.0f, 0.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-float cameraSpeed = 0.006f; 
+float cameraSpeed = 0.002f; 
 
 void processInput(GLFWwindow* window) {
+    glm::vec3 newPos = cameraPos;
+
     if (glfwGetKey(window, GLFW_KEY_W) == GLFW_PRESS) {
-        cameraPos += cameraSpeed * cameraFront;
+        newPos += cameraSpeed * cameraFront;
     }
     if (glfwGetKey(window, GLFW_KEY_S) == GLFW_PRESS) {
-        cameraPos -= cameraSpeed * cameraFront;
+        newPos -= cameraSpeed * cameraFront;
     }
     if (glfwGetKey(window, GLFW_KEY_A) == GLFW_PRESS) {
-        cameraPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed; 
+        newPos -= glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
     }
     if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS) {
-        cameraPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed; 
+        newPos += glm::normalize(glm::cross(cameraFront, cameraUp)) * cameraSpeed;
     }
+
+    newPos.y = cameraPos.y;
+
+    cameraPos = newPos;
 }
 
 float lastX = 400.0f, lastY = 300.0f;
