@@ -1,8 +1,8 @@
 ﻿  Muzeu3D.cpp
-C:\Z - Paul\A2S1\G3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp(242,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Z - Paul\A2S1\G3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp(243,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Z - Paul\A2S1\G3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp(247,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Z - Paul\A2S1\G3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp(248,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Z - Paul\A2S1\G3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp(249,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-C:\Z - Paul\A2S1\G3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp(250,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  Muzeu3D.vcxproj -> C:\Z - Paul\A2S1\G3D\Proiect-G3D\x64\Debug\Muzeu3D.exe
+C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\Muzeu3D\Muzeu3D.cpp(245,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\Muzeu3D\Muzeu3D.cpp(246,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\Muzeu3D\Muzeu3D.cpp(250,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\Muzeu3D\Muzeu3D.cpp(251,19): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\Muzeu3D\Muzeu3D.cpp(252,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\Muzeu3D\Muzeu3D.cpp(253,13): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Muzeu3D.vcxproj -> C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\x64\Debug\Muzeu3D.exe

@@ -14,10 +14,10 @@
 
 
 
-const char* vertexShaderPath = "C:/Z - Paul/A2S1/G3D/Proiect-G3D/Shaders/vertex_shader.glsl";
-const char* fragmentShaderPath = "C:/Z - Paul/A2S1/G3D/Proiect-G3D/Shaders/fragment_shader.glsl";
-const char* objPath = "C:/Z - Paul/A2S1/G3D/Proiect-G3D/Models/muzeu.obj";
-const char* mtlBaseDir = "C:/Z - Paul/A2S1/G3D/Proiect-G3D/Models/";
+const char* vertexShaderPath = "../Shaders/vertex_shader.glsl";
+const char* fragmentShaderPath = "../Shaders/fragment_shader.glsl";
+const char* objPath = "../Models/muzeu.obj";
+const char* mtlBaseDir = "../Models/";
 
 struct Mesh {
     GLuint VAO, VBO, EBO, textureID;
@@ -185,12 +185,14 @@ std::vector<Mesh> loadOBJ(const char* objFile, const char* baseDir) {
 glm::vec3 cameraPos = glm::vec3(0.0f, 3.0f, 0.0f);
 glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
-float cameraSpeed = 0.002f; 
+float cameraSpeed = 0.004f; 
+
 bool isInsideRoom(const glm::vec3& position) {
     glm::vec2 corner1(4.90363f, 7.60156f);
     glm::vec2 corner2(7.72679f, 4.68736f);
     glm::vec2 corner3(-4.28256f, -7.19005f); 
     glm::vec2 corner4(-7.2052f, -4.29742f);
+
     glm::vec2 point(position.x, position.z);
     auto lineEquation = [](const glm::vec2& p1, const glm::vec2& p2, const glm::vec2& point) {
         float a = p2.y - p1.y;
@@ -198,13 +200,14 @@ bool isInsideRoom(const glm::vec3& position) {
         float c = p2.x * p1.y - p1.x * p2.y;
         return a * point.x + b * point.y + c;
         };
+
     bool side1 = lineEquation(corner1, corner2, point) >= 0;
     bool side2 = lineEquation(corner2, corner3, point) >= 0;
     bool side3 = lineEquation(corner3, corner4, point) >= 0;
     bool side4 = lineEquation(corner4, corner1, point) >= 0; 
+
     return side1 && side2 && side3 && side4;
 }
-
 
 
 
@@ -229,7 +232,7 @@ void processInput(GLFWwindow* window) {
         std::cout << "Coliziune detectată! Poziție invalidă.\n";
     }*/
 
-    //std::cout << "Camera Position: (" << cameraPos.x << ", " << cameraPos.y << ", " << cameraPos.z << ")\n"; Scoateti comment-ul daca cumva aveti nevoie sa vedeti pozitia unde va aflati
+    std::cout << "Camera Position: (" << cameraPos.x << ", " << cameraPos.y << ", " << cameraPos.z << ")\n";
 }
 
 float lastX = 400.0f, lastY = 300.0f;
