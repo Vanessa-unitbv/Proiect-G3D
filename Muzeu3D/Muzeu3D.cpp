@@ -187,8 +187,8 @@ glm::vec3 cameraFront = glm::vec3(0.0f, 0.0f, -1.0f);
 glm::vec3 cameraUp = glm::vec3(0.0f, 1.0f, 0.0f);
 float cameraSpeed = 0.002f; 
 bool isInsideRoom(const glm::vec3& position) {
-    glm::vec2 corner1(4.80363f, 7.60156f);
-    glm::vec2 corner2(7.62679f, 4.68736f);
+    glm::vec2 corner1(4.90363f, 7.60156f);
+    glm::vec2 corner2(7.72679f, 4.68736f);
     glm::vec2 corner3(-4.28256f, -7.19005f); 
     glm::vec2 corner4(-7.2052f, -4.29742f);
     glm::vec2 point(position.x, position.z);
@@ -321,6 +321,11 @@ int main() {
     while (!glfwWindowShouldClose(window)) {
         glfwPollEvents();
 
+        // Verifică dacă tasta Esc este apăsată
+        if (glfwGetKey(window, GLFW_KEY_ESCAPE) == GLFW_PRESS) {
+            glfwSetWindowShouldClose(window, true); // Închide fereastra
+        }
+
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         glUseProgram(shaderProgram);
@@ -345,10 +350,10 @@ int main() {
             glDrawElements(GL_TRIANGLES, static_cast<GLsizei>(mesh.indexCount), GL_UNSIGNED_INT, 0);
         }
 
-
         glfwSwapBuffers(window);
     }
 
     glfwTerminate();
+
     return 0;
 }
