@@ -43,19 +43,14 @@ public:
             glm::vec3(0.005f));
 
         addModel("../Models/Chest/chest.obj", "../Models/Chest/",
-            glm::vec3(-5.f, 2.70f, -4.20f),
-            glm::vec3(0.0f, 0.0f, 0.0f),
-            glm::vec3(0.1f));
-
-        addModel("../Models/Vikings_Weapons/vikings_weapons.obj", "../Models/Vikings_Weapons/",
-            glm::vec3(-5.f, 2.70f, -3.20f),
-            glm::vec3(0.0f, 0.0f, 0.0f),
-            glm::vec3(1.f));
+            glm::vec3(-6.4f, 2.20f, -4.6f),
+            glm::vec3(0.0f, -47.0f, 0.0f),
+            glm::vec3(0.25f));
 
         addModel("../Models/Medieval_Desk/medieval_desk.obj", "../Models/Medieval_Desk/",
-            glm::vec3(-3.f, 2.70f, -2.20f),
-            glm::vec3(0.0f, 0.0f, 0.0f),
-            glm::vec3(1.f));
+            glm::vec3(-3.6f, 2.50f, -1.5f),
+            glm::vec3(0.0f, 131.0f, 0.0f),
+            glm::vec3(0.6f));
 
         addModel("../Models/Old_Torah_Scroll/old_torah_scroll.obj", "../Models/Old_Torah_Scroll/",
             glm::vec3(-3.f, 3.30f, -2.20f),
