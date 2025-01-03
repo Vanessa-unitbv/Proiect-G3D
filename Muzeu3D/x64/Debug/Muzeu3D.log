@@ -20,14 +20,6 @@ C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\A
 C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(50,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Application.cpp')
   
-  Mesh.cpp
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Mesh.h(51,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  (compiling source file 'Mesh.cpp')
-  
-  Model.cpp
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Mesh.h(51,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  (compiling source file 'Model.cpp')
-  
   Muzeu3D.cpp
 C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Mesh.h(51,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
@@ -54,7 +46,5 @@ C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\A
 C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Mesh.h(51,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   (compiling source file 'Scene.cpp')
   
-  stb_image.cpp
-  Texture.cpp
   Generating Code...
   Muzeu3D.vcxproj -> C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\x64\Debug\Muzeu3D.exe

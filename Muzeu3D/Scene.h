@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <memory>
 #include <vector>
 #include "Model.h"
@@ -26,17 +26,29 @@ public:
             "../Shaders/fragment_shader.glsl")) {
         projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
         initMuseum();
+
+        addModel("../Models/TV.obj", "../Models/",
+            glm::vec3(-5.f, 2.70f, -6.20f),
+            glm::vec3(0.0f, -130.0f, 0.0f),
+            glm::vec3(0.001f));
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
         const glm::vec3& position = glm::vec3(0.0f),
         const glm::vec3& rotation = glm::vec3(0.0f),
         const glm::vec3& scale = glm::vec3(1.0f)) {
-        auto model = std::make_shared<Model>(objPath, mtlBaseDir);
-        model->setPosition(position);
-        model->setRotation(rotation);
-        model->setScale(scale);
-        models.push_back(model);
+        try {
+            auto model = std::make_shared<Model>(objPath, mtlBaseDir);
+            model->setPosition(position);
+            model->setRotation(rotation);
+            model->setScale(scale);
+            models.push_back(model);
+            std::cout << "Loaded model: " << objPath << "\n";
+        }
+        catch (const std::exception& e) {
+            std::cerr << "Error loading model: " << objPath << "\nException: " << e.what() << "\n";
+        }
+
     }
 
     void update(GLFWwindow* window, float deltaTime) {
