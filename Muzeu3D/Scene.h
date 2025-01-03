@@ -31,6 +31,16 @@ public:
             glm::vec3(-5.f, 2.70f, -6.20f),
             glm::vec3(0.0f, -130.0f, 0.0f),
             glm::vec3(0.001f));
+
+        addModel("../Models/calaret.obj", "../Models/",
+            glm::vec3(-3.f, 2.45f, -0.5f),
+            glm::vec3(0.0f, 90.0f, 0.0f),
+            glm::vec3(0.4f));
+
+        addModel("../Models/old_wooden_cart.obj", "../Models/",
+            glm::vec3(1.0f, 2.20f, -1.2f),
+            glm::vec3(0.0f, 45.0f, 0.0f),
+            glm::vec3(0.005f));
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
