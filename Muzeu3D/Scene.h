@@ -56,6 +56,16 @@ public:
             glm::vec3(-3.f, 2.70f, -2.20f),
             glm::vec3(0.0f, 0.0f, 0.0f),
             glm::vec3(1.f));
+
+        addModel("../Models/Old_Torah_Scroll/old_torah_scroll.obj", "../Models/Old_Torah_Scroll/",
+            glm::vec3(-3.f, 3.30f, -2.20f),
+            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(0.1f));
+        
+        addModel("../Models/VladTepes/vlad_tepes.obj", "../Models/VladTepes/",
+                glm::vec3(-3.f, 3.50f, -1.5f),
+                glm::vec3(0.0f, 0.0f, 0.0f),
+                glm::vec3(0.001f));
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
