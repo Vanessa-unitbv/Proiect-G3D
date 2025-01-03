@@ -61,6 +61,36 @@ public:
                 glm::vec3(4.7f, 3.50f, 4.9f),
                 glm::vec3(0.0f, 131.0f, 0.0f),
                 glm::vec3(0.001f));
+
+       /* addModel("../Models/Showcase/showcase.obj", "../Models/Showcase/",
+            glm::vec3(-3.7f, 2.9f, -1.5f),
+            glm::vec3(0.0f, 131.0f, 0.0f),
+            glm::vec3(0.06f));*/
+
+        addModel("../Models/Stand/stand.obj", "../Models/Stand/",
+            glm::vec3(4.7f, 2.70f, 4.9f),
+            glm::vec3(0.0f, 131.0f, 0.0f),
+            glm::vec3(0.01f));
+
+        addModel("../Models/Sword/sword.obj", "../Models/Sword/",
+            glm::vec3(-1.6f, 2.20f, -1.5f),
+            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(1.1f));
+
+        addModel("../Models/Camera/camera.obj", "../Models/Camera/",
+            glm::vec3(-1.6f, 2.20f, -1.5f),
+            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(0.001f));
+
+        addModel("../Models/Cash_Register/cash_register.obj", "../Models/Cash_Register/",
+            glm::vec3(-1.6f, 2.70f, -0.5f),
+            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(0.0001f));
+
+        addModel("../Models/Table/table.obj", "../Models/Table/",
+            glm::vec3(-1.6f, 2.50f, -0.5f),
+            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(0.1f));
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,

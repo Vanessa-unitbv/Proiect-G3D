@@ -15,8 +15,7 @@ public:
         unsigned char* data = stbi_load(path, &width, &height, &channels, 0);
 
         if (data) {
-            GLenum format = (channels == 4) ? GL_RGBA : GL_RGB;
-
+            GLenum format = (channels == 4) ? GL_RGBA : GL_RGB;  // Verificã dacã existã canal alpha
             glBindTexture(GL_TEXTURE_2D, textureID);
             glTexImage2D(GL_TEXTURE_2D, 0, format, width, height, 0, format, GL_UNSIGNED_BYTE, data);
             glGenerateMipmap(GL_TEXTURE_2D);
