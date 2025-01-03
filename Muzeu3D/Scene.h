@@ -53,13 +53,13 @@ public:
             glm::vec3(0.6f));
 
         addModel("../Models/Old_Torah_Scroll/old_torah_scroll.obj", "../Models/Old_Torah_Scroll/",
-            glm::vec3(-3.f, 3.30f, -2.20f),
-            glm::vec3(0.0f, 0.0f, 0.0f),
-            glm::vec3(0.1f));
+            glm::vec3(-3.7f, 2.9f,-1.5f),
+            glm::vec3(0.0f, 131.0f, 0.0f),
+            glm::vec3(0.06f));
         
         addModel("../Models/VladTepes/vlad_tepes.obj", "../Models/VladTepes/",
-                glm::vec3(-3.f, 3.50f, -1.5f),
-                glm::vec3(0.0f, 0.0f, 0.0f),
+                glm::vec3(4.7f, 3.50f, 4.9f),
+                glm::vec3(0.0f, 131.0f, 0.0f),
                 glm::vec3(0.001f));
     }
 
