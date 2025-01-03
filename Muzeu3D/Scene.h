@@ -58,9 +58,9 @@ public:
             glm::vec3(0.06f));
         
         addModel("../Models/VladTepes/vlad_tepes.obj", "../Models/VladTepes/",
-                glm::vec3(4.7f, 3.50f, 4.9f),
+                glm::vec3(4.3f, 3.65f, 4.20f),
                 glm::vec3(0.0f, 131.0f, 0.0f),
-                glm::vec3(0.001f));
+                glm::vec3(0.0007f));
 
        /* addModel("../Models/Showcase/showcase.obj", "../Models/Showcase/",
             glm::vec3(-3.7f, 2.9f, -1.5f),
@@ -68,9 +68,9 @@ public:
             glm::vec3(0.06f));*/
 
         addModel("../Models/Stand/stand.obj", "../Models/Stand/",
-            glm::vec3(4.7f, 2.70f, 4.9f),
+            glm::vec3(6.6f, 2.20f, 6.9f),
             glm::vec3(0.0f, 131.0f, 0.0f),
-            glm::vec3(0.01f));
+            glm::vec3(0.007f));
 
         addModel("../Models/Sword/sword.obj", "../Models/Sword/",
             glm::vec3(-1.6f, 2.20f, -1.5f),
