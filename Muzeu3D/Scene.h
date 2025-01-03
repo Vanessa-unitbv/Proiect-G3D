@@ -27,25 +27,35 @@ public:
         projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
         initMuseum();
 
-        addModel("../Models/TV.obj", "../Models/",
+        addModel("../Models/TV/TV.obj", "../Models/TV/",
             glm::vec3(-5.f, 2.70f, -6.20f),
             glm::vec3(0.0f, -130.0f, 0.0f),
             glm::vec3(0.001f));
 
-        addModel("../Models/calaret.obj", "../Models/",
+        addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
             glm::vec3(-3.f, 2.45f, -0.5f),
             glm::vec3(0.0f, 90.0f, 0.0f),
             glm::vec3(0.4f));
 
-        addModel("../Models/old_wooden_cart.obj", "../Models/",
+        addModel("../Models/Old_Wooden_Cart/old_wooden_cart.obj", "../Models/Old_Wooden_Cart/",
             glm::vec3(1.0f, 2.20f, -1.2f),
             glm::vec3(0.0f, 45.0f, 0.0f),
             glm::vec3(0.005f));
 
-        addModel("../Models/ImageToStl.com_the_showcase.obj", "..Models/",
-            glm::vec3(3.1f,2.2f,1.8f),
-            glm::vec3(0.0f, 43.0f, 0.0f),
-            glm::vec3(0.8f));
+        addModel("../Models/Chest/chest.obj", "../Models/Chest/",
+            glm::vec3(-5.f, 2.70f, -4.20f),
+            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(0.1f));
+
+        addModel("../Models/Vikings_Weapons/vikings_weapons.obj", "../Models/Vikings_Weapons/",
+            glm::vec3(-5.f, 2.70f, -3.20f),
+            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(1.f));
+
+        addModel("../Models/Medieval_Desk/medieval_desk.obj", "../Models/Medieval_Desk/",
+            glm::vec3(-3.f, 2.70f, -2.20f),
+            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(1.f));
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
