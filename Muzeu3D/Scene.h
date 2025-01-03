@@ -41,6 +41,11 @@ public:
             glm::vec3(1.0f, 2.20f, -1.2f),
             glm::vec3(0.0f, 45.0f, 0.0f),
             glm::vec3(0.005f));
+
+        addModel("../Models/ImageToStl.com_showcases_-_asset_pack.obj", "..Models/",
+            glm::vec3(4.80f, 2.20f, 2.0f),
+            glm::vec3(0.0f, 43.0f, 0.0f),
+            glm::vec3(0.5f));
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
