@@ -56,7 +56,7 @@ public:
 
         newPos.y = 3.0f;
 
-        if (isPositionValid(newPos)) 
+        //if (isPositionValid(newPos)) 
         {
             position = newPos;
         }

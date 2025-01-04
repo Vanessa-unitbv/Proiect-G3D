@@ -45,9 +45,9 @@ public:
             glm::vec3(0.001f));
 
         addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
-            glm::vec3(-3.f, 2.45f, -0.5f),
-            glm::vec3(0.0f, 90.0f, 0.0f),
-            glm::vec3(0.4f));
+            glm::vec3(-2.5f, 2.45f, -0.9f),
+            glm::vec3(0.0f, 50.0f, 0.0f),
+            glm::vec3(0.5f));
 
         addModel("../Models/Old_Wooden_Cart/old_wooden_cart.obj", "../Models/Old_Wooden_Cart/",
             glm::vec3(1.0f, 2.20f, -1.2f),
@@ -85,29 +85,29 @@ public:
             glm::vec3(0.007f));
 
         addModel("../Models/Sword/sword.obj", "../Models/Sword/",
-            glm::vec3(-1.6f, 2.20f, -1.5f),
-            glm::vec3(0.0f, 0.0f, 0.0f),
-            glm::vec3(1.1f));
+            glm::vec3(-1.7f, 2.20f, 0.5f),
+            glm::vec3(0.0f, 131.0f, 0.0f),
+            glm::vec3(1.0f));
 
         addModel("../Models/Camera/camera.obj", "../Models/Camera/",
-            glm::vec3(-1.6f, 2.20f, -1.5f),
+            glm::vec3(-1.8f, 2.84f, -3.9f),
+            glm::vec3(0.0f, -30.0f, 0.0f),
+            glm::vec3(0.002f));
+
+        addModel("../Models/Cash_Register/cash_register.obj", "../Models/Cash_Register/",
+            glm::vec3(-1.2f, 3.1f, -3.1f),
             glm::vec3(0.0f, 0.0f, 0.0f),
             glm::vec3(0.001f));
 
-        addModel("../Models/Cash_Register/cash_register.obj", "../Models/Cash_Register/",
-            glm::vec3(-1.6f, 2.70f, -0.5f),
-            glm::vec3(0.0f, 0.0f, 0.0f),
-            glm::vec3(0.0001f));
-
         addModel("../Models/Table/table.obj", "../Models/Table/",
-            glm::vec3(-1.6f, 2.50f, -0.5f),
-            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(-1.3f, 2.20f, -3.4f),
+            glm::vec3(0.0f, 130.0f, 0.0f),
             glm::vec3(0.1f));
 
-        addModel("../Models/Bran/model.obj", "../Models/Bran/",
-            glm::vec3(3.0f, 2.50f, 4.0f),
+       /* addModel("../Models/Bran/model.obj", "../Models/Bran/",
+            glm::vec3(3.0f, 2.0f, 4.0f),
              glm::vec3(0.0f, 0.0f, 0.0f),
-             glm::vec3(0.1f));
+             glm::vec3(0.1f));*/
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
