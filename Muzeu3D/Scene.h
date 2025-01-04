@@ -91,6 +91,11 @@ public:
             glm::vec3(-1.6f, 2.50f, -0.5f),
             glm::vec3(0.0f, 0.0f, 0.0f),
             glm::vec3(0.1f));
+
+        addModel("../Models/Bran/model.obj", "../Models/Bran/",
+            glm::vec3(3.0f, 2.50f, 4.0f),
+             glm::vec3(0.0f, 0.0f, 0.0f),
+             glm::vec3(0.1f));
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
