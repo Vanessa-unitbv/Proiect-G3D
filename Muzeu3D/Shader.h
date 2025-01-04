@@ -74,5 +74,15 @@ public:
         glUniformMatrix4fv(glGetUniformLocation(programID, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));
     }
 
+    void setVec3(const std::string& name, const glm::vec3& value) {
+        GLint location = glGetUniformLocation(programID, name.c_str());
+        if (location == -1) {
+            std::cerr << "Uniform " << name << " nu a fost gãsit în shader!" << std::endl;
+        }
+        else {
+            glUniform3fv(location, 1, &value[0]);
+        }
+    }
+
     GLuint getProgram() const { return programID; }
 };

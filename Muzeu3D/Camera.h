@@ -9,7 +9,7 @@ private:
     glm::vec3 front;
     glm::vec3 up;
     float yaw, pitch;
-    const float SPEED = 0.004f;
+    const float SPEED = 0.01f;
 
 public:
     Camera(const glm::vec3& pos = glm::vec3(0.0f, 3.0f, 0.0f))
@@ -56,7 +56,7 @@ public:
 
         newPos.y = 3.0f;
 
-        //if (isPositionValid(newPos)) 
+        if (isPositionValid(newPos)) 
         {
             position = newPos;
         }
@@ -84,5 +84,9 @@ public:
 
     glm::mat4 getViewMatrix() const {
         return glm::lookAt(position, position + front, up);
+    }
+
+    glm::vec3 getPosition() const {
+        return position;
     }
 };

@@ -4,6 +4,7 @@
 #include "Model.h"
 #include "Camera.h"
 #include "Shader.h"
+#include "Light.h"
 
 class Scene {
 private:
@@ -11,6 +12,12 @@ private:
     std::unique_ptr<Camera> camera;
     std::unique_ptr<Shader> shader;
     glm::mat4 projection;
+
+    Light light1;
+    Light light2;
+    Light light3;
+
+    bool lightEnabled = true;
 
     void initMuseum() {
         auto museum = std::make_shared<Model>("../Models/muzeu.obj", "../Models/");
@@ -23,7 +30,12 @@ private:
 public:
     Scene() : camera(std::make_unique<Camera>()),
         shader(std::make_unique<Shader>("../Shaders/vertex_shader.glsl",
-            "../Shaders/fragment_shader.glsl")) {
+            "../Shaders/fragment_shader.glsl"))
+        ,
+        light1(glm::vec3(4.0f, 3.0f, 4.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(2.0f, 2.0f, 2.0f)),
+        light2(glm::vec3(10.0f, 5.0f, 10.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(2.0f, 2.0f, 2.0f)),
+        light3(glm::vec3(-10.0f, 5.0f, -10.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(2.0f, 2.0f, 2.0f)) {
+
         projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
         initMuseum();
 
@@ -118,12 +130,58 @@ public:
 
     void update(GLFWwindow* window, float deltaTime) {
         camera->processKeyboard(window, deltaTime);
+
+        if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS) {
+            lightEnabled = true;
+        }
+
+        if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS) {
+            lightEnabled = false;
+        }
     }
 
     void render() {
         shader->use();
         shader->setMat4("projection", projection);
         shader->setMat4("view", camera->getViewMatrix());
+
+        if (lightEnabled) {
+            shader->setVec3("light1.position", glm::vec3(1.0f, 1.0f, 1.0f));
+            shader->setVec3("light1.ambient", glm::vec3(0.4f, 0.4f, 0.4f));
+            shader->setVec3("light1.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
+            shader->setVec3("light1.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+
+            shader->setVec3("light2.position", glm::vec3(1.0f, 1.0f, 1.0f));
+            shader->setVec3("light2.ambient", glm::vec3(0.4f, 0.4f, 0.4f));
+            shader->setVec3("light2.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
+            shader->setVec3("light2.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+
+            shader->setVec3("light3.position", glm::vec3(1.0f, 1.0f, 1.0f));
+            shader->setVec3("light3.ambient", glm::vec3(0.4f, 0.4f, 0.4f));
+            shader->setVec3("light3.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
+            shader->setVec3("light3.specular", glm::vec3(0.5f, 0.5f, 0.5f));
+
+            shader->setVec3("viewPos", camera->getPosition());
+        }
+        else {
+           shader->setVec3("light1.position", glm::vec3(1.0f, 1.0f, 1.0f));
+            shader->setVec3("light1.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+            shader->setVec3("light1.diffuse", glm::vec3(0.1f, 0.1f, 0.1f));
+            shader->setVec3("light1.specular", glm::vec3(0.1f, 0.1f, 0.1f));
+
+            shader->setVec3("light2.position", glm::vec3(1.0f, 1.0f, 1.0f));
+            shader->setVec3("light2.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+            shader->setVec3("light2.diffuse", glm::vec3(0.1f, 0.1f, 0.1f));
+            shader->setVec3("light2.specular", glm::vec3(0.1f, 0.1f, 0.1f));
+
+            shader->setVec3("light3.position", glm::vec3(1.0f, 1.0f, 1.0f));
+            shader->setVec3("light3.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
+            shader->setVec3("light3.diffuse", glm::vec3(0.1f, 0.1f, 0.1f));
+            shader->setVec3("light3.specular", glm::vec3(0.1f, 0.1f, 0.1f));
+
+
+            shader->setVec3("viewPos", camera->getPosition());
+        }
 
         for (const auto& model : models) {
             shader->setMat4("model", model->getModelMatrix());

@@ -137,6 +137,7 @@
     <ClCompile Include="..\external\tinyobjloader-release\tiny_obj_loader.cpp" />
     <ClCompile Include="Application.cpp" />
     <ClCompile Include="Camera.cpp" />
+    <ClCompile Include="Light.cpp" />
     <ClCompile Include="Mesh.cpp" />
     <ClCompile Include="Model.cpp" />
     <ClCompile Include="Muzeu3D.cpp" />
@@ -149,6 +150,7 @@
     <ClInclude Include="..\external\tinyobjloader-release\tiny_obj_loader.h" />
     <ClInclude Include="Application.h" />
     <ClInclude Include="Camera.h" />
+    <ClInclude Include="Light.h" />
     <ClInclude Include="Mesh.h" />
     <ClInclude Include="Model.h" />
     <ClInclude Include="Scene.h" />

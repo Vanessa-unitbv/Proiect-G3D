@@ -6,6 +6,7 @@ C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\Muzeu3D\Applica
 C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\Muzeu3D\Application.h(51,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
 C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\Muzeu3D\Application.h(52,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
 C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\Muzeu3D\Application.h(53,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  Camera.cpp
   Muzeu3D.cpp
 C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\Muzeu3D\Mesh.h(51,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
 C:\Users\WINDOWS 11\Desktop\Facultate\Anul2-SEM1\G3D\Proiect G3D\Muzeu3D\Application.h(45,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
