@@ -40,7 +40,7 @@ public:
         initMuseum();
 
         addModel("../Models/TV/TV.obj", "../Models/TV/",
-            glm::vec3(-5.f, 2.70f, -6.20f),
+            glm::vec3(-5.1f, 3.50f, -6.0f),
             glm::vec3(0.0f, -130.0f, 0.0f),
             glm::vec3(0.001f));
 
@@ -108,6 +108,17 @@ public:
             glm::vec3(3.0f, 2.0f, 4.0f),
              glm::vec3(0.0f, 0.0f, 0.0f),
              glm::vec3(0.1f));*/
+
+        addModel("../Models/Old_Table/old_table.obj", "../Models/Old_Table/",
+            glm::vec3(-5.f, 2.20f, -6.20f),
+            glm::vec3(0.0f, 45.0f, 0.0f),
+            glm::vec3(1.1f));
+
+        addModel("../Models/Cupboard/cupboard.obj", "../Models/Cupboard/",
+            glm::vec3(-2.5f, 2.70f, -5.20f),
+            glm::vec3(0.0f, -45.0f, 0.0f),
+            glm::vec3(0.003f));
+        
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
