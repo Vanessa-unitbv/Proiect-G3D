@@ -192,7 +192,21 @@ public:
             glm::vec3(-4.0f, 2.70f, -6.3f),
             glm::vec3(0.0f, 130.0f, 0.0f),
             glm::vec3(0.006f));
-        
+
+        addModel("../Models/Telephone/telephone.obj", "../Models/Telephone/",
+            glm::vec3(-4.4f, 3.32f, -2.4f),
+            glm::vec3(0.0f, 135.0f, 0.0f),
+            glm::vec3(0.24f));
+
+        addModel("../Models/Book_Shelf/bookshelf.obj", "../Models/Book_Shelf/",
+            glm::vec3(-4.6f, 3.0f, -2.50f),
+            glm::vec3(0.0f, 135.0f, 0.0f),
+            glm::vec3(1.6f));
+
+        addModel("../Models/Lantern/lantern.obj", "../Models/Lantern/",
+            glm::vec3(-4.7f, 3.08f, -2.7f),
+            glm::vec3(0.0f, 135.0f, 0.0f),
+            glm::vec3(0.2f));
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
