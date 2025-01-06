@@ -174,8 +174,8 @@ public:
             glm::vec3(0.1f));
 
         addModel("../Models/Bran/model.obj", "../Models/Bran/",
-            glm::vec3(3.0f, 2.0f, 4.0f),
-             glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(4.64f, 1.49f, 6.4f),
+             glm::vec3(0.0f, 180.0f, 0.0f),
              glm::vec3(0.1f));
 
         addModel("../Models/Old_Table/old_table.obj", "../Models/Old_Table/",
@@ -192,6 +192,11 @@ public:
             glm::vec3(-4.0f, 2.70f, -6.3f),
             glm::vec3(0.0f, 130.0f, 0.0f),
             glm::vec3(0.006f));
+
+        addModel("../Models/Stema/model.obj", "../Models/Stema/",
+            glm::vec3(6.22f, 2.8f, 6.27f),
+            glm::vec3(0.0f, 230.0f, 0.0f),
+            glm::vec3(0.02f));
 
         addModel("../Models/Telephone/telephone.obj", "../Models/Telephone/",
             glm::vec3(-4.4f, 3.32f, -2.4f),
