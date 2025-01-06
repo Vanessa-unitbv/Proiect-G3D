@@ -2,6 +2,7 @@
 #include <GLFW/glfw3.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>
+#include <iostream>
 
 class Camera {
 private:
@@ -60,6 +61,10 @@ public:
         {
             position = newPos;
         }
+        /*std::cout << "Camera position: ("
+            << position.x << ", "
+            << position.y << ", "
+            << position.z << ")" << std::endl;*/
     }
 
     void processMouse(float xoffset, float yoffset, bool constrainPitch = true) {

@@ -91,11 +91,11 @@ public:
             "../Shaders/fragment_shader.glsl")),
         lightIndicatorShader(std::make_unique<Shader>("../Shaders/light_indicator_vertex.glsl",
             "../Shaders/light_indicator_fragment.glsl")),
-        light1(glm::vec3(6.31521f, 4.0f, 6.14446f),
+        light1(glm::vec3(4.3f, 4.0f, 4.2f),
             glm::vec3(0.1f, 0.1f, 0.1f),
             glm::vec3(2.0f, 2.0f, 2.0f),
             glm::vec3(2.0f, 2.0f, 2.0f)),
-        light2(glm::vec3(-5.74388f, 4.0f, -5.74373f),
+        light2(glm::vec3(-4.3f, 4.0f, -4.2f),
             glm::vec3(0.1f, 0.1f, 0.1f),
             glm::vec3(2.0f, 2.0f, 2.0f),
             glm::vec3(2.0f, 2.0f, 2.0f)),
@@ -222,6 +222,17 @@ public:
             glm::vec3(0.f, 2.40f, -2.3f),
             glm::vec3(0.0f, 135.0f, 0.0f),
             glm::vec3(0.0006f));
+
+        addModel("../Models/Cavaler/3D_scan_armor_henry_II_of_france.obj", "../Models/Cavaler/",
+            glm::vec3(0.57f, 2.0f, 2.88f),
+            glm::vec3(90.0f, 175.0f, 45.0f),
+            glm::vec3(0.03f));
+
+        addModel("../Models/Canon/OldShipCannon.obj", "../Models/Canon/",
+            glm::vec3(0.015f, 2.2f, 2.02f),
+            glm::vec3(0.0f, 90.0f, 0.0f),
+            glm::vec3(0.4f));
+
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
