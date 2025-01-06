@@ -1,13 +1,11 @@
 #version 330 core
-
-in vec2 TexCoord;
-in vec3 fragPos;
-in vec3 normal;
-
 out vec4 FragColor;
 
-uniform sampler2D texture1;
-uniform vec3 viewPos;
+struct Material {
+    sampler2D diffuse;
+    sampler2D specular;
+    float shininess;
+}; 
 
 struct Light {
     vec3 position;
@@ -16,34 +14,26 @@ struct Light {
     vec3 specular;
 };
 
+in vec3 FragPos;
+in vec3 Normal;
+in vec2 TexCoords;
+
+uniform Material material;
 uniform Light light1;
 uniform Light light2;
 uniform Light light3;
 
-vec3 calculateLighting(Light light, vec3 normal, vec3 fragPos, vec3 texColor) {
-    vec3 ambient = light.ambient * texColor;
-
-    vec3 norm = normalize(normal);
-    vec3 lightDir = normalize(light.position - fragPos);
-    float diff = max(dot(norm, lightDir), 0.0);
-    vec3 diffuse = light.diffuse * diff * texColor;
-
-    vec3 viewDir = normalize(viewPos - fragPos);
-    vec3 reflectDir = reflect(-lightDir, norm);
-    float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32);
-    vec3 specular = light.specular * spec;
-
-    return ambient + diffuse + specular;
+vec3 CalcLight(Light light)
+{
+    vec3 ambient = light.ambient * vec3(texture(material.diffuse, TexCoords));
+    return ambient;
 }
 
-void main() {
-    vec4 texColor = texture(texture1, TexCoord);
-    
-    vec3 result = vec3(0.0);
-    
-    result += calculateLighting(light1, normal, fragPos, texColor.rgb);
-    result += calculateLighting(light2, normal, fragPos, texColor.rgb);
-    result += calculateLighting(light3, normal, fragPos, texColor.rgb);
-
+void main()
+{
+    vec3 result = CalcLight(light1);
+    result += CalcLight(light2);
+    result += CalcLight(light3);
+    result = result * 1.0;
     FragColor = vec4(result, 1.0);
 }

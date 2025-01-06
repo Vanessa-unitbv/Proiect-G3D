@@ -11,6 +11,8 @@ private:
     std::vector<std::shared_ptr<Model>> models;
     std::unique_ptr<Camera> camera;
     std::unique_ptr<Shader> shader;
+    std::unique_ptr<Shader> lightIndicatorShader;
+    unsigned int lightVAO, lightVBO;
     glm::mat4 projection;
 
     Light light1;
@@ -18,6 +20,62 @@ private:
     Light light3;
 
     bool lightEnabled = true;
+
+    void initLightIndicators() {
+        float vertices[] = {
+            -0.1f, -0.1f, -0.1f,
+             0.1f, -0.1f, -0.1f,
+             0.1f,  0.1f, -0.1f,
+             0.1f,  0.1f, -0.1f,
+            -0.1f,  0.1f, -0.1f,
+            -0.1f, -0.1f, -0.1f,
+
+            -0.1f, -0.1f,  0.1f,
+             0.1f, -0.1f,  0.1f,
+             0.1f,  0.1f,  0.1f,
+             0.1f,  0.1f,  0.1f,
+            -0.1f,  0.1f,  0.1f,
+            -0.1f, -0.1f,  0.1f,
+
+            -0.1f,  0.1f,  0.1f,
+            -0.1f,  0.1f, -0.1f,
+            -0.1f, -0.1f, -0.1f,
+            -0.1f, -0.1f, -0.1f,
+            -0.1f, -0.1f,  0.1f,
+            -0.1f,  0.1f,  0.1f,
+
+             0.1f,  0.1f,  0.1f,
+             0.1f,  0.1f, -0.1f,
+             0.1f, -0.1f, -0.1f,
+             0.1f, -0.1f, -0.1f,
+             0.1f, -0.1f,  0.1f,
+             0.1f,  0.1f,  0.1f,
+
+            -0.1f, -0.1f, -0.1f,
+             0.1f, -0.1f, -0.1f,
+             0.1f, -0.1f,  0.1f,
+             0.1f, -0.1f,  0.1f,
+            -0.1f, -0.1f,  0.1f,
+            -0.1f, -0.1f, -0.1f,
+
+            -0.1f,  0.1f, -0.1f,
+             0.1f,  0.1f, -0.1f,
+             0.1f,  0.1f,  0.1f,
+             0.1f,  0.1f,  0.1f,
+            -0.1f,  0.1f,  0.1f,
+            -0.1f,  0.1f, -0.1f
+        };
+
+        glGenVertexArrays(1, &lightVAO);
+        glGenBuffers(1, &lightVBO);
+
+        glBindVertexArray(lightVAO);
+        glBindBuffer(GL_ARRAY_BUFFER, lightVBO);
+        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
+
+        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
+        glEnableVertexAttribArray(0);
+    }
 
     void initMuseum() {
         auto museum = std::make_shared<Model>("../Models/muzeu.obj", "../Models/");
@@ -30,14 +88,25 @@ private:
 public:
     Scene() : camera(std::make_unique<Camera>()),
         shader(std::make_unique<Shader>("../Shaders/vertex_shader.glsl",
-            "../Shaders/fragment_shader.glsl"))
-        ,
-        light1(glm::vec3(4.0f, 3.0f, 4.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(2.0f, 2.0f, 2.0f)),
-        light2(glm::vec3(10.0f, 5.0f, 10.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(2.0f, 2.0f, 2.0f)),
-        light3(glm::vec3(-10.0f, 5.0f, -10.0f), glm::vec3(0.1f, 0.1f, 0.1f), glm::vec3(2.0f, 2.0f, 2.0f), glm::vec3(2.0f, 2.0f, 2.0f)) {
+            "../Shaders/fragment_shader.glsl")),
+        lightIndicatorShader(std::make_unique<Shader>("../Shaders/light_indicator_vertex.glsl",
+            "../Shaders/light_indicator_fragment.glsl")),
+        light1(glm::vec3(6.31521f, 4.0f, 6.14446f),
+            glm::vec3(0.1f, 0.1f, 0.1f),
+            glm::vec3(2.0f, 2.0f, 2.0f),
+            glm::vec3(2.0f, 2.0f, 2.0f)),
+        light2(glm::vec3(-5.74388f, 4.0f, -5.74373f),
+            glm::vec3(0.1f, 0.1f, 0.1f),
+            glm::vec3(2.0f, 2.0f, 2.0f),
+            glm::vec3(2.0f, 2.0f, 2.0f)),
+        light3(glm::vec3(0.0f, 4.0f, 0.0f),
+            glm::vec3(0.1f, 0.1f, 0.1f),
+            glm::vec3(2.0f, 2.0f, 2.0f),
+            glm::vec3(2.0f, 2.0f, 2.0f)) {
 
         projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
         initMuseum();
+        initLightIndicators();
 
         addModel("../Models/TV/TV.obj", "../Models/TV/",
             glm::vec3(-5.1f, 3.50f, -6.0f),
@@ -136,7 +205,6 @@ public:
         catch (const std::exception& e) {
             std::cerr << "Error loading model: " << objPath << "\nException: " << e.what() << "\n";
         }
-
     }
 
     void update(GLFWwindow* window, float deltaTime) {
@@ -145,7 +213,6 @@ public:
         if (glfwGetKey(window, GLFW_KEY_L) == GLFW_PRESS) {
             lightEnabled = true;
         }
-
         if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS) {
             lightEnabled = false;
         }
@@ -157,25 +224,24 @@ public:
         shader->setMat4("view", camera->getViewMatrix());
 
         if (lightEnabled) {
-            shader->setVec3("light1.position", glm::vec3(1.0f, 1.0f, 1.0f));
+            shader->setVec3("light1.position", light1.position);
             shader->setVec3("light1.ambient", glm::vec3(0.4f, 0.4f, 0.4f));
             shader->setVec3("light1.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
             shader->setVec3("light1.specular", glm::vec3(0.5f, 0.5f, 0.5f));
 
-            shader->setVec3("light2.position", glm::vec3(1.0f, 1.0f, 1.0f));
+            shader->setVec3("light2.position", light2.position);
             shader->setVec3("light2.ambient", glm::vec3(0.4f, 0.4f, 0.4f));
             shader->setVec3("light2.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
             shader->setVec3("light2.specular", glm::vec3(0.5f, 0.5f, 0.5f));
 
-            shader->setVec3("light3.position", glm::vec3(1.0f, 1.0f, 1.0f));
+            shader->setVec3("light3.position", light3.position);
             shader->setVec3("light3.ambient", glm::vec3(0.4f, 0.4f, 0.4f));
             shader->setVec3("light3.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
             shader->setVec3("light3.specular", glm::vec3(0.5f, 0.5f, 0.5f));
 
-            shader->setVec3("viewPos", camera->getPosition());
         }
         else {
-           shader->setVec3("light1.position", glm::vec3(1.0f, 1.0f, 1.0f));
+            shader->setVec3("light1.position", glm::vec3(1.0f, 1.0f, 1.0f));
             shader->setVec3("light1.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
             shader->setVec3("light1.diffuse", glm::vec3(0.1f, 0.1f, 0.1f));
             shader->setVec3("light1.specular", glm::vec3(0.1f, 0.1f, 0.1f));
@@ -190,15 +256,47 @@ public:
             shader->setVec3("light3.diffuse", glm::vec3(0.1f, 0.1f, 0.1f));
             shader->setVec3("light3.specular", glm::vec3(0.1f, 0.1f, 0.1f));
 
-
-            shader->setVec3("viewPos", camera->getPosition());
         }
 
+        // Draw scene models
         for (const auto& model : models) {
             shader->setMat4("model", model->getModelMatrix());
             model->draw(*shader);
         }
+
+        // Draw light indicators
+        lightIndicatorShader->use();
+        lightIndicatorShader->setMat4("projection", projection);
+        lightIndicatorShader->setMat4("view", camera->getViewMatrix());
+
+        glBindVertexArray(lightVAO);
+
+        // Draw indicator for light1
+        glm::mat4 model = glm::mat4(1.0f);
+        model = glm::translate(model, light1.position);
+        lightIndicatorShader->setMat4("model", model);
+        lightIndicatorShader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 0.0f));
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        // Draw indicator for light2
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, light2.position);
+        lightIndicatorShader->setMat4("model", model);
+        lightIndicatorShader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 0.0f));
+        glDrawArrays(GL_TRIANGLES, 0, 36);
+
+        // Draw indicator for light3
+        model = glm::mat4(1.0f);
+        model = glm::translate(model, light3.position);
+        lightIndicatorShader->setMat4("model", model);
+        lightIndicatorShader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 0.0f));
+        glDrawArrays(GL_TRIANGLES, 0, 36);
     }
 
     Camera* getCamera() { return camera.get(); }
+
+    ~Scene() {
+        glDeleteVertexArrays(1, &lightVAO);
+        glDeleteBuffers(1, &lightVBO);
+    }
 };
