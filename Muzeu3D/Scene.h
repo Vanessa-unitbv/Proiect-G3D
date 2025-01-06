@@ -187,6 +187,11 @@ public:
             glm::vec3(-2.5f, 2.70f, -5.20f),
             glm::vec3(0.0f, -45.0f, 0.0f),
             glm::vec3(0.003f));
+
+        addModel("../Models/Garmophone/ImageToStl.com_gramophone.obj", "../Models/Garmophone/",
+            glm::vec3(-4.0f, 2.70f, -6.3f),
+            glm::vec3(0.0f, 130.0f, 0.0f),
+            glm::vec3(0.006f));
         
     }
 
