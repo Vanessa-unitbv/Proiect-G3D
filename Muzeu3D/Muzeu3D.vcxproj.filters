@@ -87,12 +87,4 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <FxCompile Include="light_indicator_fragment.hlsl">
-      <Filter>Source Files</Filter>
-    </FxCompile>
-    <FxCompile Include="light_indicator_vertex.hlsl">
-      <Filter>Source Files</Filter>
-    </FxCompile>
-  </ItemGroup>
 </Project>

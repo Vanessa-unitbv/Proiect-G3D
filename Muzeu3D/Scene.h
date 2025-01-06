@@ -173,10 +173,10 @@ public:
             glm::vec3(0.0f, 130.0f, 0.0f),
             glm::vec3(0.1f));
 
-       /* addModel("../Models/Bran/model.obj", "../Models/Bran/",
+        addModel("../Models/Bran/model.obj", "../Models/Bran/",
             glm::vec3(3.0f, 2.0f, 4.0f),
              glm::vec3(0.0f, 0.0f, 0.0f),
-             glm::vec3(0.1f));*/
+             glm::vec3(0.1f));
 
         addModel("../Models/Old_Table/old_table.obj", "../Models/Old_Table/",
             glm::vec3(-5.f, 2.20f, -6.20f),
