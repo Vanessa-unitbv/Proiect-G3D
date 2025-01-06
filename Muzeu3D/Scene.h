@@ -119,14 +119,14 @@ public:
             glm::vec3(0.5f));
 
         addModel("../Models/Old_Wooden_Cart/old_wooden_cart.obj", "../Models/Old_Wooden_Cart/",
-            glm::vec3(1.0f, 2.20f, -1.2f),
+            glm::vec3(1.2f, 2.20f, -0.6f),
             glm::vec3(0.0f, 45.0f, 0.0f),
-            glm::vec3(0.005f));
+            glm::vec3(0.007f));
 
         addModel("../Models/Chest/chest.obj", "../Models/Chest/",
             glm::vec3(-6.4f, 2.20f, -4.6f),
             glm::vec3(0.0f, -47.0f, 0.0f),
-            glm::vec3(0.25f));
+           glm::vec3(0.25f));
 
         addModel("../Models/Medieval_Desk/medieval_desk.obj", "../Models/Medieval_Desk/",
             glm::vec3(-3.6f, 2.50f, -1.5f),
@@ -134,7 +134,7 @@ public:
             glm::vec3(0.6f));
 
         addModel("../Models/Old_Torah_Scroll/old_torah_scroll.obj", "../Models/Old_Torah_Scroll/",
-            glm::vec3(-3.7f, 2.9f,-1.5f),
+            glm::vec3(-3.65f, 2.9f,-1.45f),
             glm::vec3(0.0f, 131.0f, 0.0f),
             glm::vec3(0.06f));
         
@@ -212,6 +212,16 @@ public:
             glm::vec3(-4.7f, 3.08f, -2.7f),
             glm::vec3(0.0f, 135.0f, 0.0f),
             glm::vec3(0.2f));
+
+        addModel("../Models/Lamp/lamp.obj", "../Models/Lamp/",
+            glm::vec3(-3.95f, 3.50f, -1.15f),
+            glm::vec3(0.0f, 131.0f, 0.0f),
+            glm::vec3(0.3f));
+
+        addModel("../Models/Medieval_Chest/medieval_chest.obj", "../Models/Medieval_Chest/",
+            glm::vec3(0.f, 2.40f, -2.3f),
+            glm::vec3(0.0f, 135.0f, 0.0f),
+            glm::vec3(0.0006f));
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
