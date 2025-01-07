@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include <GL/glew.h>
 #include <glm/glm.hpp>
 #include <glm/gtc/type_ptr.hpp>
@@ -70,6 +70,10 @@ public:
         glUseProgram(programID);
     }
 
+    void setFloat(const std::string& name, float value) {
+        glUniform1f(glGetUniformLocation(programID, name.c_str()), value);
+    }
+
     void setMat4(const std::string& name, const glm::mat4& matrix) {
         glUniformMatrix4fv(glGetUniformLocation(programID, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));
     }
@@ -77,7 +81,7 @@ public:
     void setVec3(const std::string& name, const glm::vec3& value) {
         GLint location = glGetUniformLocation(programID, name.c_str());
         if (location == -1) {
-            std::cerr << "Uniform " << name << " nu a fost gãsit în shader!" << std::endl;
+            std::cerr << "Uniform " << name << " nu a fost gÄƒsit Ã®n shader!" << std::endl;
         }
         else {
             glUniform3fv(location, 1, &value[0]);

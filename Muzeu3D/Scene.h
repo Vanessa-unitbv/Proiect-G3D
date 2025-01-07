@@ -21,6 +21,40 @@ private:
 
     bool lightEnabled = true;
 
+
+    void setupLights() {
+        // Room 1 - Warm light (Vlad Tepes area)
+        light1 = Light(
+            glm::vec3(6.69f, 4.5f, 4.95f),      // Above Vlad
+            glm::vec3(0.2f, 0.15f, 0.1f),       // Warm ambient
+            glm::vec3(0.8f, 0.6f, 0.4f),        // Warm diffuse
+            glm::vec3(1.0f, 0.8f, 0.6f),        // Warm specular
+            1.0f, 0.07f, 0.017f                  // Adjusted attenuation
+        );
+
+        // Room 2 - Cool light (Telescope area)
+        light2 = Light(
+            glm::vec3(-4.1f, 4.0f, -4.8f),      // Above telescope
+            glm::vec3(0.1f, 0.15f, 0.2f),       // Cool ambient
+            glm::vec3(0.4f, 0.6f, 0.8f),        // Cool diffuse
+            glm::vec3(0.6f, 0.8f, 1.0f),        // Cool specular
+            1.0f, 0.09f, 0.032f                  // Standard attenuation
+        );
+
+        // Center area - Neutral light
+        light3 = Light(
+            glm::vec3(0.0f, 5.0f, 0.0f),        // Higher center position
+            glm::vec3(0.15f),                    // Neutral ambient
+            glm::vec3(0.7f),                     // Neutral diffuse
+            glm::vec3(0.9f),                     // Neutral specular
+            1.0f, 0.045f, 0.0075f                // Wide-reaching attenuation
+        );
+    }
+
+  
+
+
+
     float vladRotationAngle = 0.0f; // Variabila pentru a urmări unghiul de rotație
 
     void initMuseum() {
@@ -86,11 +120,12 @@ public:
         initTepes();
         initCavaler();
         initTelescope();
+        setupLights();
 
 
         //ROOM 1 
 
-        addModel("../Models/Chest/chest.obj", "../Models/Chest/",
+       /* addModel("../Models/Chest/chest.obj", "../Models/Chest/",
             glm::vec3(-6.4f, 2.20f, -4.6f),
             glm::vec3(0.0f, -47.0f, 0.0f),
             glm::vec3(0.25f));
@@ -149,7 +184,7 @@ public:
             glm::vec3(-3.95f, 3.50f, -1.15f),
             glm::vec3(0.0f, 131.0f, 0.0f),
             glm::vec3(0.3f));
-
+       */
         //ROOM 2
 
         addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
@@ -174,7 +209,7 @@ public:
         
         // ROOM 3
 
-        addModel("../Models/Stand/stand.obj", "../Models/Stand/",
+      /*  addModel("../Models/Stand/stand.obj", "../Models/Stand/",
             glm::vec3(10.15f, 2.20f,5.2f),
             glm::vec3(0.0f, 176.0f, 0.0f),
             glm::vec3(0.007f));
@@ -204,6 +239,8 @@ public:
               glm::vec3(0.0f, 130.0f, 0.0f),
               glm::vec3(0.001f));
 
+              */
+
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
@@ -222,6 +259,56 @@ public:
             std::cerr << "Error loading model: " << objPath << "\nException: " << e.what() << "\n";
         }
     }
+
+
+    void render() {
+        shader->use();
+        shader->setMat4("projection", projection);
+        shader->setMat4("view", camera->getViewMatrix());
+        shader->setVec3("viewPos", camera->getPosition());
+
+        if (lightEnabled) {
+            for (int i = 1; i <= 3; i++) {
+                const Light& light = (i == 1) ? light1 : (i == 2) ? light2 : light3;
+                std::string prefix = "light" + std::to_string(i);
+
+                shader->setVec3(prefix + ".position", light.position);
+                shader->setVec3(prefix + ".ambient", light.ambient);
+                shader->setVec3(prefix + ".diffuse", light.diffuse);
+                shader->setVec3(prefix + ".specular", light.specular);
+                shader->setFloat(prefix + ".constant", light.constant);
+                shader->setFloat(prefix + ".linear", light.linear);
+                shader->setFloat(prefix + ".quadratic", light.quadratic);
+            }
+        }
+        else {
+            // Ambient only lighting when disabled
+            Light darkLight(
+                glm::vec3(0.0f),
+                glm::vec3(0.05f),
+                glm::vec3(0.0f),
+                glm::vec3(0.0f)
+            );
+
+            for (int i = 1; i <= 3; i++) {
+                std::string prefix = "light" + std::to_string(i);
+                shader->setVec3(prefix + ".position", darkLight.position);
+                shader->setVec3(prefix + ".ambient", darkLight.ambient);
+                shader->setVec3(prefix + ".diffuse", darkLight.diffuse);
+                shader->setVec3(prefix + ".specular", darkLight.specular);
+                shader->setFloat(prefix + ".constant", 1.0f);
+                shader->setFloat(prefix + ".linear", 0.0f);
+                shader->setFloat(prefix + ".quadratic", 0.0f);
+            }
+        }
+
+        for (const auto& model : models) {
+            shader->setMat4("model", model->getModelMatrix());
+            model->draw(*shader);
+        }
+    }
+
+
 
     void update(GLFWwindow* window, float deltaTime) {
         camera->processKeyboard(window, deltaTime);
@@ -243,53 +330,6 @@ public:
             if (model->getName() == "VladTepes" || model->getName()=="Telescope") { // Presupunem că ai o metodă `getName`
                 model->setRotation(glm::vec3(0.0f, vladRotationAngle, 0.0f));
             }
-        }
-    }
-
-    void render() {
-        shader->use();
-        shader->setMat4("projection", projection);
-        shader->setMat4("view", camera->getViewMatrix());
-
-        if (lightEnabled) {
-            shader->setVec3("light1.position", light1.position);
-            shader->setVec3("light1.ambient", glm::vec3(0.4f, 0.4f, 0.4f));
-            shader->setVec3("light1.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
-            shader->setVec3("light1.specular", glm::vec3(0.5f, 0.5f, 0.5f));
-
-            shader->setVec3("light2.position", light2.position);
-            shader->setVec3("light2.ambient", glm::vec3(0.4f, 0.4f, 0.4f));
-            shader->setVec3("light2.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
-            shader->setVec3("light2.specular", glm::vec3(0.5f, 0.5f, 0.5f));
-
-            shader->setVec3("light3.position", light3.position);
-            shader->setVec3("light3.ambient", glm::vec3(0.4f, 0.4f, 0.4f));
-            shader->setVec3("light3.diffuse", glm::vec3(0.5f, 0.5f, 0.5f));
-            shader->setVec3("light3.specular", glm::vec3(0.5f, 0.5f, 0.5f));
-
-        }
-        else {
-            shader->setVec3("light1.position", glm::vec3(1.0f, 1.0f, 1.0f));
-            shader->setVec3("light1.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-            shader->setVec3("light1.diffuse", glm::vec3(0.1f, 0.1f, 0.1f));
-            shader->setVec3("light1.specular", glm::vec3(0.1f, 0.1f, 0.1f));
-
-            shader->setVec3("light2.position", glm::vec3(1.0f, 1.0f, 1.0f));
-            shader->setVec3("light2.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-            shader->setVec3("light2.diffuse", glm::vec3(0.1f, 0.1f, 0.1f));
-            shader->setVec3("light2.specular", glm::vec3(0.1f, 0.1f, 0.1f));
-
-            shader->setVec3("light3.position", glm::vec3(1.0f, 1.0f, 1.0f));
-            shader->setVec3("light3.ambient", glm::vec3(0.05f, 0.05f, 0.05f));
-            shader->setVec3("light3.diffuse", glm::vec3(0.1f, 0.1f, 0.1f));
-            shader->setVec3("light3.specular", glm::vec3(0.1f, 0.1f, 0.1f));
-
-        }
-
-        // Draw scene models
-        for (const auto& model : models) {
-            shader->setMat4("model", model->getModelMatrix());
-            model->draw(*shader);
         }
     }
 
