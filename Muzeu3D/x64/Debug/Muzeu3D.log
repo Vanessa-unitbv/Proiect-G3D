@@ -1,50 +1,50 @@
 ﻿  Application.cpp
-C:\Proiect-G3D\Muzeu3D\Mesh.h(57,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Mesh.h(57,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   (compiling source file 'Application.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(53,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(53,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Application.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(54,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(54,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Application.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(58,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(58,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Application.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(59,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(59,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Application.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(60,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(60,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Application.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(61,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(61,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Application.cpp')
   
   Muzeu3D.cpp
-C:\Proiect-G3D\Muzeu3D\Mesh.h(57,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Mesh.h(57,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(53,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(53,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(54,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(54,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(58,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(58,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(59,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(59,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(60,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(60,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(61,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.h(61,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
   
   Scene.cpp
-C:\Proiect-G3D\Muzeu3D\Mesh.h(57,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Mesh.h(57,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   (compiling source file 'Scene.cpp')
   
   Generating Code...
-  Muzeu3D.vcxproj -> C:\Proiect-G3D\x64\Debug\Muzeu3D.exe
+  Muzeu3D.vcxproj -> C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\x64\Debug\Muzeu3D.exe

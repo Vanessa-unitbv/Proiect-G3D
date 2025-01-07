@@ -30,6 +30,7 @@ private:
         museum->setScale(glm::vec3(1.0f));
         models.push_back(museum);
     }
+
     void initTepes() {
         auto VladTepes = std::make_shared<Model>("../Models/VladTepes/vlad_tepes.obj", "../Models/VladTepes/");
         VladTepes->setPosition(glm::vec3(6.69f, 3.65f, 4.95f));
@@ -37,6 +38,28 @@ private:
         VladTepes->setScale(glm::vec3(0.0007f));
         VladTepes->setName("VladTepes");
         models.push_back(VladTepes);
+    }
+
+    void initCavaler()
+    {
+        auto Cavaler = std::make_shared<Model>("../Models/Cavaler/3D_scan_armor_henry_II_of_france.obj", "../Models/Cavaler/");
+        
+        Cavaler->setPosition(glm::vec3(-0.2f, 2.0f, -2.2f));
+        Cavaler->setRotation(glm::vec3(90.0f, 175.0f, -65.0f));
+        Cavaler->setScale(glm::vec3(0.03f));
+        Cavaler->setName("Cavaler");
+        models.push_back(Cavaler);
+    }
+
+    void initTelescope()
+    {
+        auto Telescope = std::make_shared<Model>("../Models/Telescope/telescope.obj", "../Models/Telescope/");
+
+        Telescope->setPosition(glm::vec3(-4.1f, 2.10f, -4.8f));
+        Telescope->setRotation(glm::vec3(0.0f, 45.0f, 0.0f));
+        Telescope->setScale(glm::vec3(0.008f));
+        Telescope->setName("Telescope");
+        models.push_back(Telescope);
     }
 
 public:
@@ -61,51 +84,31 @@ public:
         projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
         initMuseum();
         initTepes();
+        initCavaler();
+        initTelescope();
 
-        addModel("../Models/TV/TV.obj", "../Models/TV/",
-            glm::vec3(-5.1f, 3.50f, -6.0f),
-            glm::vec3(0.0f, -130.0f, 0.0f),
-            glm::vec3(0.001f));
 
-        addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
-            glm::vec3(-2.5f, 2.45f, -0.9f),
-            glm::vec3(0.0f, 50.0f, 0.0f),
-            glm::vec3(0.5f));
-
-        addModel("../Models/Old_Wooden_Cart/old_wooden_cart.obj", "../Models/Old_Wooden_Cart/",
-            glm::vec3(1.2f, 2.20f, -0.6f),
-            glm::vec3(0.0f, 45.0f, 0.0f),
-            glm::vec3(0.007f));
+        //ROOM 1 
 
         addModel("../Models/Chest/chest.obj", "../Models/Chest/",
             glm::vec3(-6.4f, 2.20f, -4.6f),
             glm::vec3(0.0f, -47.0f, 0.0f),
-           glm::vec3(0.25f));
+            glm::vec3(0.25f));
 
-        addModel("../Models/Medieval_Desk/medieval_desk.obj", "../Models/Medieval_Desk/",
-            glm::vec3(-3.6f, 2.50f, -1.5f),
-            glm::vec3(0.0f, 131.0f, 0.0f),
-            glm::vec3(0.6f));
+        addModel("../Models/TV/TV.obj", "../Models/TV/",
+            glm::vec3(-2.7f, 3.50f, -4.5f),
+            glm::vec3(0.0f, -220.0f, 0.0f),
+            glm::vec3(0.001f));
 
-        addModel("../Models/Old_Torah_Scroll/old_torah_scroll.obj", "../Models/Old_Torah_Scroll/",
-            glm::vec3(-3.65f, 2.9f,-1.45f),
-            glm::vec3(0.0f, 131.0f, 0.0f),
-            glm::vec3(0.06f));
+        addModel("../Models/Old_Table/old_table.obj", "../Models/Old_Table/",
+            glm::vec3(-2.55f, 2.20f, -4.35f),
+            glm::vec3(0.0f, -45.0f, 0.0f),
+            glm::vec3(1.1f));
 
-        addModel("../Models/Stand/stand.obj", "../Models/Stand/",
-            glm::vec3(10.2f, 2.20f,5.2f),
-            glm::vec3(0.0f, 176.0f, 0.0f),
-            glm::vec3(0.007f));
-
-        addModel("../Models/Sword/sword.obj", "../Models/Sword/",
-            glm::vec3(-1.7f, 2.20f, 0.5f),
-            glm::vec3(0.0f, 131.0f, 0.0f),
-            glm::vec3(1.0f));
-
-        /*addModel("../Models/Camera/camera.obj", "../Models/Camera/",
-            glm::vec3(-1.8f, 2.84f, -3.9f),
-            glm::vec3(0.0f, -30.0f, 0.0f),
-            glm::vec3(0.002f));*/
+        addModel("../Models/Camera/camera.obj", "../Models/Camera/",
+            glm::vec3(-1.6f, 2.84f, -3.6f),
+            glm::vec3(0.0f, 0.0f, 0.0f),
+            glm::vec3(0.3f));
 
         addModel("../Models/Cash_Register/cash_register.obj", "../Models/Cash_Register/",
             glm::vec3(-1.2f, 3.1f, -3.1f),
@@ -117,38 +120,28 @@ public:
             glm::vec3(0.0f, 130.0f, 0.0f),
             glm::vec3(0.1f));
 
-        addModel("../Models/Bran/model.obj", "../Models/Bran/",
-            glm::vec3(4.64f, 1.49f, 6.4f),
-             glm::vec3(0.0f, 180.0f, 0.0f),
-             glm::vec3(0.1f));
+        addModel("../Models/Medieval_Desk/medieval_desk.obj", "../Models/Medieval_Desk/",
+            glm::vec3(-3.6f, 2.50f, -1.5f),
+            glm::vec3(0.0f, 131.0f, 0.0f),
+            glm::vec3(0.6f));
 
-        addModel("../Models/Old_Table/old_table.obj", "../Models/Old_Table/",
-            glm::vec3(-5.f, 2.20f, -6.20f),
-            glm::vec3(0.0f, 45.0f, 0.0f),
-            glm::vec3(1.1f));
-
-        addModel("../Models/Cupboard/cupboard.obj", "../Models/Cupboard/",
-            glm::vec3(-2.5f, 2.70f, -5.20f),
-            glm::vec3(0.0f, -45.0f, 0.0f),
-            glm::vec3(0.003f));
-
-        addModel("../Models/Stema/model.obj", "../Models/Stema/",
-            glm::vec3(6.22f, 2.8f, 6.27f),
-            glm::vec3(0.0f, 230.0f, 0.0f),
-            glm::vec3(0.02f));
+        addModel("../Models/Old_Torah_Scroll/old_torah_scroll.obj", "../Models/Old_Torah_Scroll/",
+            glm::vec3(-3.65f, 2.9f, -1.45f),
+            glm::vec3(0.0f, 131.0f, 0.0f),
+            glm::vec3(0.06f));
 
         addModel("../Models/Telephone/telephone.obj", "../Models/Telephone/",
-            glm::vec3(-4.4f, 3.32f, -2.4f),
+            glm::vec3(-4.6f, 3.32f, -2.6f),
             glm::vec3(0.0f, 135.0f, 0.0f),
             glm::vec3(0.24f));
 
         addModel("../Models/Book_Shelf/bookshelf.obj", "../Models/Book_Shelf/",
-            glm::vec3(-4.6f, 3.0f, -2.50f),
+            glm::vec3(-4.8f, 3.0f, -2.7f),
             glm::vec3(0.0f, 135.0f, 0.0f),
             glm::vec3(1.6f));
 
         addModel("../Models/Lantern/lantern.obj", "../Models/Lantern/",
-            glm::vec3(-4.7f, 3.08f, -2.7f),
+            glm::vec3(-4.9f, 3.08f, -2.9f),
             glm::vec3(0.0f, 135.0f, 0.0f),
             glm::vec3(0.2f));
 
@@ -157,20 +150,49 @@ public:
             glm::vec3(0.0f, 131.0f, 0.0f),
             glm::vec3(0.3f));
 
+        //ROOM 2
+
+        addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
+            glm::vec3(-2.5f, 2.45f, -0.9f),
+            glm::vec3(0.0f, 50.0f, 0.0f),
+            glm::vec3(0.5f));
+
+        addModel("../Models/Old_Wooden_Cart/old_wooden_cart.obj", "../Models/Old_Wooden_Cart/",
+            glm::vec3(1.2f, 2.20f, -0.6f),
+            glm::vec3(0.0f, 45.0f, 0.0f),
+            glm::vec3(0.007f));
+
+        addModel("../Models/Sword/sword.obj", "../Models/Sword/",
+            glm::vec3(-1.7f, 2.20f, 0.5f),
+            glm::vec3(0.0f, 131.0f, 0.0f),
+            glm::vec3(1.0f));
+
+        addModel("../Models/Canon/OldShipCannon.obj", "../Models/Canon/",
+            glm::vec3(0.02f, 2.2f, 2.1f),
+            glm::vec3(0.0f, 90.0f, 0.0f),
+            glm::vec3(0.4f));
+        
+        // ROOM 3
+
+        addModel("../Models/Stand/stand.obj", "../Models/Stand/",
+            glm::vec3(10.15f, 2.20f,5.2f),
+            glm::vec3(0.0f, 176.0f, 0.0f),
+            glm::vec3(0.007f));
+
+        addModel("../Models/Bran/model.obj", "../Models/Bran/",
+            glm::vec3(4.f, 1.1f, 6.0f),
+             glm::vec3(0.0f, 130.0f, 0.0f),
+             glm::vec3(0.15f));
+
+        addModel("../Models/Stema/model.obj", "../Models/Stema/",
+            glm::vec3(6.22f, 2.8f, 6.27f),
+            glm::vec3(0.0f, 230.0f, 0.0f),
+            glm::vec3(0.02f));
+
         addModel("../Models/Medieval_Chest/medieval_chest.obj", "../Models/Medieval_Chest/",
             glm::vec3(2.034f, 2.40f, 4.34f),
             glm::vec3(0.0f, -45.0f, 0.0f),
             glm::vec3(0.0006f));
-
-        addModel("../Models/Cavaler/3D_scan_armor_henry_II_of_france.obj", "../Models/Cavaler/",
-            glm::vec3(0.57f, 2.0f, 2.88f),
-            glm::vec3(90.0f, 175.0f, 45.0f),
-            glm::vec3(0.03f));
-
-        addModel("../Models/Canon/OldShipCannon.obj", "../Models/Canon/",
-            glm::vec3(0.015f, 2.2f, 2.02f),
-            glm::vec3(0.0f, 90.0f, 0.0f),
-            glm::vec3(0.4f));
 
           addModel("../Models/Table/Table.obj", "../Models/Table/",
               glm::vec3(4.6f, 2.1f, 2.6f),
@@ -218,7 +240,7 @@ public:
 
         // Aplică rotația pe modelul VladTepes
         for (auto& model : models) {
-            if (model->getName() == "VladTepes") { // Presupunem că ai o metodă `getName`
+            if (model->getName() == "VladTepes" || model->getName()=="Telescope") { // Presupunem că ai o metodă `getName`
                 model->setRotation(glm::vec3(0.0f, vladRotationAngle, 0.0f));
             }
         }
