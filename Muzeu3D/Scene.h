@@ -30,6 +30,14 @@ private:
         museum->setScale(glm::vec3(1.0f));
         models.push_back(museum);
     }
+    void initTepes() {
+        auto VladTepes = std::make_shared<Model>("../Models/VladTepes/vlad_tepes.obj", "../Models/VladTepes/");
+        VladTepes->setPosition(glm::vec3(6.69f, 3.65f, 4.95f));
+        VladTepes->setRotation(glm::vec3(0.0f, 176.0f, 0.0f));
+        VladTepes->setScale(glm::vec3(0.0007f));
+        VladTepes->setName("VladTepes");
+        models.push_back(VladTepes);
+    }
 
 public:
     Scene() : camera(std::make_unique<Camera>()),
@@ -52,6 +60,7 @@ public:
 
         projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
         initMuseum();
+        initTepes();
 
         addModel("../Models/TV/TV.obj", "../Models/TV/",
             glm::vec3(-5.1f, 3.50f, -6.0f),
@@ -82,11 +91,6 @@ public:
             glm::vec3(-3.65f, 2.9f,-1.45f),
             glm::vec3(0.0f, 131.0f, 0.0f),
             glm::vec3(0.06f));
-        
-        addModel("../Models/VladTepes/vlad_tepes.obj", "../Models/VladTepes/",
-                glm::vec3(6.69f, 3.65f, 4.95f),
-                glm::vec3(0.0f, 176.0f, 0.0f),
-                glm::vec3(0.0007f));
 
         addModel("../Models/Stand/stand.obj", "../Models/Stand/",
             glm::vec3(10.2f, 2.20f,5.2f),
@@ -98,10 +102,10 @@ public:
             glm::vec3(0.0f, 131.0f, 0.0f),
             glm::vec3(1.0f));
 
-        addModel("../Models/Camera/camera.obj", "../Models/Camera/",
+        /*addModel("../Models/Camera/camera.obj", "../Models/Camera/",
             glm::vec3(-1.8f, 2.84f, -3.9f),
             glm::vec3(0.0f, -30.0f, 0.0f),
-            glm::vec3(0.002f));
+            glm::vec3(0.002f));*/
 
         addModel("../Models/Cash_Register/cash_register.obj", "../Models/Cash_Register/",
             glm::vec3(-1.2f, 3.1f, -3.1f),
@@ -205,6 +209,18 @@ public:
         }
         if (glfwGetKey(window, GLFW_KEY_O) == GLFW_PRESS) {
             lightEnabled = false;
+        }
+
+        vladRotationAngle += 50.0f * deltaTime; // Rotește cu 50 de grade pe secundă
+        if (vladRotationAngle >= 360.0f) {
+            vladRotationAngle -= 360.0f; // Resetează unghiul după o rotație completă
+        }
+
+        // Aplică rotația pe modelul VladTepes
+        for (auto& model : models) {
+            if (model->getName() == "VladTepes") { // Presupunem că ai o metodă `getName`
+                model->setRotation(glm::vec3(0.0f, vladRotationAngle, 0.0f));
+            }
         }
     }
 

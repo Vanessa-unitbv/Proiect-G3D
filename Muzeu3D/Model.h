@@ -9,6 +9,7 @@
 #include <fstream>
 #include <iostream>
 #include "Mesh.h"
+#include <string>
 
 class Model {
 private:
@@ -16,6 +17,7 @@ private:
     glm::vec3 position{ 0.0f };
     glm::vec3 rotation{ 0.0f };
     glm::vec3 scale{ 1.0f };
+    std::string name;
 
 public:
     Model(const char* objPath, const char* mtlBaseDir) {
@@ -109,6 +111,9 @@ public:
     void setPosition(const glm::vec3& pos) { position = pos; }
     void setRotation(const glm::vec3& rot) { rotation = rot; }
     void setScale(const glm::vec3& s) { scale = s; }
+
+    void setName(const std::string& modelName) {  name = modelName;}
+    std::string getName() const { return name;}
 
     glm::mat4 getModelMatrix() const {
         glm::mat4 model = glm::mat4(1.0f);
