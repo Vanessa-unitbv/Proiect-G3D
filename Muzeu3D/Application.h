@@ -17,7 +17,14 @@ private:
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        window = glfwCreateWindow(800, 600, "Muzeu3D", nullptr, nullptr);
+        // Obținem dimensiunile ecranului
+        const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
+        if (!mode) {
+            throw std::runtime_error("Failed to get video mode");
+        }
+
+        // Creează fereastra full screen
+        window = glfwCreateWindow(mode->width, mode->height, "Muzeul de istorie Brasov", glfwGetPrimaryMonitor(), nullptr);
         if (!window) {
             glfwTerminate();
             throw std::runtime_error("Failed to create GLFW window");
@@ -30,7 +37,8 @@ private:
             throw std::runtime_error("Failed to initialize GLEW");
         }
 
-        glViewport(0, 0, 800, 600);
+        // Setăm viewport-ul pentru a acoperi întreaga fereastră
+        glViewport(0, 0, mode->width, mode->height);
         glEnable(GL_DEPTH_TEST);
 
         glEnable(GL_BLEND);
@@ -38,7 +46,7 @@ private:
     }
 
     static void mouseCallback(GLFWwindow* window, double xpos, double ypos) {
-        static float lastX = 400.0f, lastY = 300.0f;
+        static float lastX = 600.0f, lastY = 500.0f;
         static bool firstMouse = true;
 
         if (firstMouse) {
@@ -76,10 +84,9 @@ public:
 
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-            
             scene->update(window, 0.016f);
             scene->render();
-           
+
             glfwSwapBuffers(window);
             glfwPollEvents();
         }

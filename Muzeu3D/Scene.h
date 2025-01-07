@@ -21,7 +21,7 @@ private:
 
     bool lightEnabled = true;
 
-    
+    float vladRotationAngle = 0.0f; // Variabila pentru a urmări unghiul de rotație
 
     void initMuseum() {
         auto museum = std::make_shared<Model>("../Models/muzeu.obj", "../Models/");
@@ -88,11 +88,6 @@ public:
                 glm::vec3(0.0f, 176.0f, 0.0f),
                 glm::vec3(0.0007f));
 
-       /* addModel("../Models/Showcase/showcase.obj", "../Models/Showcase/",
-            glm::vec3(-3.7f, 2.9f, -1.5f),
-            glm::vec3(0.0f, 131.0f, 0.0f),
-            glm::vec3(0.06f));*/
-
         addModel("../Models/Stand/stand.obj", "../Models/Stand/",
             glm::vec3(10.2f, 2.20f,5.2f),
             glm::vec3(0.0f, 176.0f, 0.0f),
@@ -132,11 +127,6 @@ public:
             glm::vec3(-2.5f, 2.70f, -5.20f),
             glm::vec3(0.0f, -45.0f, 0.0f),
             glm::vec3(0.003f));
-
-        addModel("../Models/Garmophone/ImageToStl.com_gramophone.obj", "../Models/Garmophone/",
-            glm::vec3(3.75f, 2.80f, 2.08f),
-            glm::vec3(0.0f, 130.0f, 0.0f),
-            glm::vec3(0.006f));
 
         addModel("../Models/Stema/model.obj", "../Models/Stema/",
             glm::vec3(6.22f, 2.8f, 6.27f),
@@ -179,9 +169,14 @@ public:
             glm::vec3(0.4f));
 
           addModel("../Models/Table/Table.obj", "../Models/Table/",
-              glm::vec3(3.84f, 2.1f, 2.0f),
+              glm::vec3(4.6f, 2.1f, 2.6f),
               glm::vec3(0.0f, 130.0f, 0.0f),
               glm::vec3(0.1f));
+
+          addModel("../Models/Gun/GunMesh.obj", "../Models/Gun/",
+              glm::vec3(3.841f, 2.85f, 2.5f),
+              glm::vec3(0.0f, 130.0f, 0.0f),
+              glm::vec3(0.001f));
 
     }
 

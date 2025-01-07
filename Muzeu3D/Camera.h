@@ -10,7 +10,7 @@ private:
     glm::vec3 front;
     glm::vec3 up;
     float yaw, pitch;
-    const float SPEED = 0.08f;
+    const float SPEED = 0.05f;
 
 public:
     Camera(const glm::vec3& pos = glm::vec3(0.0f, 3.0f, 0.0f))
@@ -61,7 +61,7 @@ public:
         {
             position = newPos;
         }
-        /*std::cout << "Camera position: ("
+       /* std::cout << "Camera position: ("
             << position.x << ", "
             << position.y << ", "
             << position.z << ")" << std::endl;*/
