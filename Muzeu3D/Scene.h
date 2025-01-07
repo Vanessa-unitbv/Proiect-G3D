@@ -21,61 +21,7 @@ private:
 
     bool lightEnabled = true;
 
-    void initLightIndicators() {
-        float vertices[] = {
-            -0.1f, -0.1f, -0.1f,
-             0.1f, -0.1f, -0.1f,
-             0.1f,  0.1f, -0.1f,
-             0.1f,  0.1f, -0.1f,
-            -0.1f,  0.1f, -0.1f,
-            -0.1f, -0.1f, -0.1f,
-
-            -0.1f, -0.1f,  0.1f,
-             0.1f, -0.1f,  0.1f,
-             0.1f,  0.1f,  0.1f,
-             0.1f,  0.1f,  0.1f,
-            -0.1f,  0.1f,  0.1f,
-            -0.1f, -0.1f,  0.1f,
-
-            -0.1f,  0.1f,  0.1f,
-            -0.1f,  0.1f, -0.1f,
-            -0.1f, -0.1f, -0.1f,
-            -0.1f, -0.1f, -0.1f,
-            -0.1f, -0.1f,  0.1f,
-            -0.1f,  0.1f,  0.1f,
-
-             0.1f,  0.1f,  0.1f,
-             0.1f,  0.1f, -0.1f,
-             0.1f, -0.1f, -0.1f,
-             0.1f, -0.1f, -0.1f,
-             0.1f, -0.1f,  0.1f,
-             0.1f,  0.1f,  0.1f,
-
-            -0.1f, -0.1f, -0.1f,
-             0.1f, -0.1f, -0.1f,
-             0.1f, -0.1f,  0.1f,
-             0.1f, -0.1f,  0.1f,
-            -0.1f, -0.1f,  0.1f,
-            -0.1f, -0.1f, -0.1f,
-
-            -0.1f,  0.1f, -0.1f,
-             0.1f,  0.1f, -0.1f,
-             0.1f,  0.1f,  0.1f,
-             0.1f,  0.1f,  0.1f,
-            -0.1f,  0.1f,  0.1f,
-            -0.1f,  0.1f, -0.1f
-        };
-
-        glGenVertexArrays(1, &lightVAO);
-        glGenBuffers(1, &lightVBO);
-
-        glBindVertexArray(lightVAO);
-        glBindBuffer(GL_ARRAY_BUFFER, lightVBO);
-        glBufferData(GL_ARRAY_BUFFER, sizeof(vertices), vertices, GL_STATIC_DRAW);
-
-        glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
-        glEnableVertexAttribArray(0);
-    }
+    
 
     void initMuseum() {
         auto museum = std::make_shared<Model>("../Models/muzeu.obj", "../Models/");
@@ -106,7 +52,6 @@ public:
 
         projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
         initMuseum();
-        initLightIndicators();
 
         addModel("../Models/TV/TV.obj", "../Models/TV/",
             glm::vec3(-5.1f, 3.50f, -6.0f),
@@ -139,8 +84,8 @@ public:
             glm::vec3(0.06f));
         
         addModel("../Models/VladTepes/vlad_tepes.obj", "../Models/VladTepes/",
-                glm::vec3(4.3f, 3.65f, 4.20f),
-                glm::vec3(0.0f, 131.0f, 0.0f),
+                glm::vec3(6.69f, 3.65f, 4.95f),
+                glm::vec3(0.0f, 176.0f, 0.0f),
                 glm::vec3(0.0007f));
 
        /* addModel("../Models/Showcase/showcase.obj", "../Models/Showcase/",
@@ -149,8 +94,8 @@ public:
             glm::vec3(0.06f));*/
 
         addModel("../Models/Stand/stand.obj", "../Models/Stand/",
-            glm::vec3(6.6f, 2.20f, 6.9f),
-            glm::vec3(0.0f, 131.0f, 0.0f),
+            glm::vec3(10.2f, 2.20f,5.2f),
+            glm::vec3(0.0f, 176.0f, 0.0f),
             glm::vec3(0.007f));
 
         addModel("../Models/Sword/sword.obj", "../Models/Sword/",
@@ -189,7 +134,7 @@ public:
             glm::vec3(0.003f));
 
         addModel("../Models/Garmophone/ImageToStl.com_gramophone.obj", "../Models/Garmophone/",
-            glm::vec3(-4.0f, 2.70f, -6.3f),
+            glm::vec3(3.75f, 2.80f, 2.08f),
             glm::vec3(0.0f, 130.0f, 0.0f),
             glm::vec3(0.006f));
 
@@ -219,8 +164,8 @@ public:
             glm::vec3(0.3f));
 
         addModel("../Models/Medieval_Chest/medieval_chest.obj", "../Models/Medieval_Chest/",
-            glm::vec3(0.f, 2.40f, -2.3f),
-            glm::vec3(0.0f, 135.0f, 0.0f),
+            glm::vec3(2.034f, 2.40f, 4.34f),
+            glm::vec3(0.0f, -45.0f, 0.0f),
             glm::vec3(0.0006f));
 
         addModel("../Models/Cavaler/3D_scan_armor_henry_II_of_france.obj", "../Models/Cavaler/",
@@ -232,6 +177,11 @@ public:
             glm::vec3(0.015f, 2.2f, 2.02f),
             glm::vec3(0.0f, 90.0f, 0.0f),
             glm::vec3(0.4f));
+
+          addModel("../Models/Table/Table.obj", "../Models/Table/",
+              glm::vec3(3.84f, 2.1f, 2.0f),
+              glm::vec3(0.0f, 130.0f, 0.0f),
+              glm::vec3(0.1f));
 
     }
 
@@ -308,34 +258,6 @@ public:
             shader->setMat4("model", model->getModelMatrix());
             model->draw(*shader);
         }
-
-        // Draw light indicators
-        lightIndicatorShader->use();
-        lightIndicatorShader->setMat4("projection", projection);
-        lightIndicatorShader->setMat4("view", camera->getViewMatrix());
-
-        glBindVertexArray(lightVAO);
-
-        // Draw indicator for light1
-        glm::mat4 model = glm::mat4(1.0f);
-        model = glm::translate(model, light1.position);
-        lightIndicatorShader->setMat4("model", model);
-        lightIndicatorShader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 0.0f));
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        // Draw indicator for light2
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, light2.position);
-        lightIndicatorShader->setMat4("model", model);
-        lightIndicatorShader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 0.0f));
-        glDrawArrays(GL_TRIANGLES, 0, 36);
-
-        // Draw indicator for light3
-        model = glm::mat4(1.0f);
-        model = glm::translate(model, light3.position);
-        lightIndicatorShader->setMat4("model", model);
-        lightIndicatorShader->setVec3("lightColor", glm::vec3(1.0f, 1.0f, 0.0f));
-        glDrawArrays(GL_TRIANGLES, 0, 36);
     }
 
     Camera* getCamera() { return camera.get(); }
