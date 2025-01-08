@@ -15,12 +15,19 @@ private:
     unsigned int lightVAO, lightVBO;
     glm::mat4 projection;
 
+
     Light light1;
     Light light2;
     Light light3;
 
     bool lightEnabled = true;
 
+    struct ShadowMap {
+        unsigned int depthMapFBO;
+        unsigned int depthMap;
+        glm::mat4 lightSpaceMatrix;
+    };
+    std::vector<ShadowMap> shadowMaps;
 
     void setupLights() {
         // Room 1 - Warm light (Vlad Tepes area)
@@ -59,60 +66,56 @@ private:
     std::unique_ptr<Shader> shadowMapShader;
     glm::mat4 lightSpaceMatrix;
 
-    void initShadowMap() {
-        // Creează FBO pentru depth mapping
-        glGenFramebuffers(1, &depthMapFBO);
+    void initShadowMaps() {
+        shadowMaps.resize(3); // Pentru cele 3 lumini
 
-        // Creează textura pentru depth map
-        glGenTextures(1, &depthMap);
-        glBindTexture(GL_TEXTURE_2D, depthMap);
-        glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT,
-            mode->width, mode->height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-        float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
-        glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+        for (auto& shadowMap : shadowMaps) {
+            glGenFramebuffers(1, &shadowMap.depthMapFBO);
+            glGenTextures(1, &shadowMap.depthMap);
+            glBindTexture(GL_TEXTURE_2D, shadowMap.depthMap);
+            glTexImage2D(GL_TEXTURE_2D, 0, GL_DEPTH_COMPONENT,
+                mode->width, mode->height, 0, GL_DEPTH_COMPONENT, GL_FLOAT, NULL);
 
-        // Atașează depth texture ca FBO's depth buffer
-        glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
-        glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, depthMap, 0);
-        glDrawBuffer(GL_NONE);
-        glReadBuffer(GL_NONE);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+            float borderColor[] = { 1.0f, 1.0f, 1.0f, 1.0f };
+            glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, borderColor);
+
+            glBindFramebuffer(GL_FRAMEBUFFER, shadowMap.depthMapFBO);
+            glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, shadowMap.depthMap, 0);
+            glDrawBuffer(GL_NONE);
+            glReadBuffer(GL_NONE);
+        }
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
 
-    void renderShadowMap() {
-        // 1. Calculează light space matrix pentru shadow mapping
-        glm::mat4 lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 1.0f, 7.5f);
-        glm::mat4 lightView = glm::lookAt(
-            glm::vec3(light1.position), // folosim prima lumină ca sursă principală pentru umbre
-            glm::vec3(0.0f, 0.0f, 0.0f),
-            glm::vec3(0.0f, 1.0f, 0.0f));
-        lightSpaceMatrix = lightProjection * lightView;
-
+    void renderShadowMaps() {
+        std::vector<Light> lights = { light1, light2, light3 };
         glViewport(0, 0, mode->width, mode->height);
 
+        for (size_t i = 0; i < lights.size(); i++) {
+            glm::mat4 lightProjection = glm::ortho(-10.0f, 10.0f, -10.0f, 10.0f, 1.0f, 7.5f);
+            glm::mat4 lightView = glm::lookAt(
+                lights[i].position,
+                glm::vec3(0.0f, 0.0f, 0.0f),
+                glm::vec3(0.0f, 1.0f, 0.0f));
+            shadowMaps[i].lightSpaceMatrix = lightProjection * lightView;
 
-        // 2. Randează scena din perspectiva luminii
-        shadowMapShader->use();
-        shadowMapShader->setMat4("lightSpaceMatrix", lightSpaceMatrix);
+            shadowMapShader->use();
+            shadowMapShader->setMat4("lightSpaceMatrix", shadowMaps[i].lightSpaceMatrix);
 
+            glBindFramebuffer(GL_FRAMEBUFFER, shadowMaps[i].depthMapFBO);
+            glClear(GL_DEPTH_BUFFER_BIT);
 
-        glBindFramebuffer(GL_FRAMEBUFFER, depthMapFBO);
-        glClear(GL_DEPTH_BUFFER_BIT);
-
-        for (const auto& model : models) {
-            shadowMapShader->setMat4("model", model->getModelMatrix());
-            model->draw(*shadowMapShader);
+            for (const auto& model : models) {
+                shadowMapShader->setMat4("model", model->getModelMatrix());
+                model->draw(*shadowMapShader);
+            }
         }
-
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
-
-
-
     float rotationAngle = 0.0f; // Variabila pentru a urmări unghiul de rotație
 
     void initMuseum() {
@@ -184,11 +187,11 @@ public:
             "../Shaders/shadow_map_vertex.glsl",
             "../Shaders/shadow_map_fragment.glsl"
         );
-        initShadowMap();
+        initShadowMaps();
 
         //ROOM 1 
 
-        addModel("../Models/Chest/chest.obj", "../Models/Chest/",
+       addModel("../Models/Chest/chest.obj", "../Models/Chest/",
             glm::vec3(-6.4f, 2.20f, -4.6f),
             glm::vec3(0.0f, -47.0f, 0.0f),
             glm::vec3(0.25f));
@@ -204,21 +207,21 @@ public:
             glm::vec3(1.1f));
 
         addModel("../Models/Camera/camera.obj", "../Models/Camera/",
-            glm::vec3(-1.6f, 2.84f, -3.6f),
+            glm::vec3(-1.6f, 2.74f, -3.6f),
             glm::vec3(0.0f, 0.0f, 0.0f),
             glm::vec3(0.3f));
 
         addModel("../Models/Cash_Register/cash_register.obj", "../Models/Cash_Register/",
-            glm::vec3(-1.2f, 3.1f, -3.1f),
+            glm::vec3(-1.2f, 3.0f, -3.1f),
             glm::vec3(0.0f, 0.0f, 0.0f),
             glm::vec3(0.001f));
 
         addModel("../Models/Table/table.obj", "../Models/Table/",
-            glm::vec3(-1.3f, 2.20f, -3.4f),
+            glm::vec3(-1.3f, 2.10f, -3.4f),
             glm::vec3(0.0f, 130.0f, 0.0f),
             glm::vec3(0.1f));
 
-        addModel("../Models/Medieval_Desk/medieval_desk.obj", "../Models/Medieval_Desk/",
+       addModel("../Models/Medieval_Desk/medieval_desk.obj", "../Models/Medieval_Desk/",
             glm::vec3(-3.6f, 2.50f, -1.5f),
             glm::vec3(0.0f, 131.0f, 0.0f),
             glm::vec3(0.6f));
@@ -245,7 +248,7 @@ public:
        
         //ROOM 2
 
-       /* addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
+        addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
             glm::vec3(-2.5f, 2.45f, -0.9f),
             glm::vec3(0.0f, 50.0f, 0.0f),
             glm::vec3(0.5f));
@@ -263,11 +266,11 @@ public:
         addModel("../Models/Canon/OldShipCannon.obj", "../Models/Canon/",
             glm::vec3(0.02f, 2.2f, 2.1f),
             glm::vec3(0.0f, 90.0f, 0.0f),
-            glm::vec3(0.4f));*/
+            glm::vec3(0.4f));
         
         // ROOM 3
 
-        /*addModel("../Models/Stand/stand.obj", "../Models/Stand/",
+        addModel("../Models/Stand/stand.obj", "../Models/Stand/",
             glm::vec3(10.15f, 2.20f,5.2f),
             glm::vec3(0.0f, 176.0f, 0.0f),
             glm::vec3(0.007f));
@@ -295,10 +298,7 @@ public:
           addModel("../Models/Gun/GunMesh.obj", "../Models/Gun/",
               glm::vec3(3.841f, 2.85f, 2.5f),
               glm::vec3(0.0f, 130.0f, 0.0f),
-              glm::vec3(0.001f));*/
-
-              
-
+              glm::vec3(0.001f));
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
@@ -320,30 +320,22 @@ public:
 
 
     void render() {
+        renderShadowMaps();
 
-        // 1. Prima trecere: generează depth map
-        renderShadowMap();
-
-        // 2. A doua trecere: randează scena normal folosind shadow mapping
         glViewport(0, 0, mode->width, mode->height);
-
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
         shader->use();
         shader->setMat4("projection", projection);
         shader->setMat4("view", camera->getViewMatrix());
-        shader->setMat4("lightSpaceMatrix", lightSpaceMatrix);
         shader->setVec3("viewPos", camera->getPosition());
 
-        // Activează textura pentru shadow map
-        glActiveTexture(GL_TEXTURE1);
-        glBindTexture(GL_TEXTURE_2D, depthMap);
-        shader->setInt("shadowMap", 1);
-
-        shader->use();
-        shader->setMat4("projection", projection);
-        shader->setMat4("view", camera->getViewMatrix());
-        shader->setVec3("viewPos", camera->getPosition());
+        for (int i = 0; i < 3; i++) {
+            glActiveTexture(GL_TEXTURE1 + i);
+            glBindTexture(GL_TEXTURE_2D, shadowMaps[i].depthMap);
+            shader->setInt("shadowMap" + std::to_string(i + 1), 1 + i);
+            shader->setMat4("lightSpaceMatrix" + std::to_string(i + 1), shadowMaps[i].lightSpaceMatrix);
+        }
 
         if (lightEnabled) {
             for (int i = 1; i <= 3; i++) {
@@ -360,7 +352,6 @@ public:
             }
         }
         else {
-            // Ambient only lighting when disabled
             Light darkLight(
                 glm::vec3(0.0f),
                 glm::vec3(0.05f),

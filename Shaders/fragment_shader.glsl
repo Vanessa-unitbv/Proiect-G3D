@@ -2,7 +2,9 @@
 in vec3 FragPos;
 in vec3 Normal;
 in vec2 TexCoord;
-in vec4 FragPosLightSpace;  
+in vec4 FragPosLightSpace1;
+in vec4 FragPosLightSpace2;
+in vec4 FragPosLightSpace3;
 
 out vec4 FragColor;
 
@@ -21,22 +23,22 @@ uniform Light light2;
 uniform Light light3;
 uniform vec3 viewPos;
 uniform sampler2D texture_diffuse1;
-uniform sampler2D shadowMap; 
+uniform sampler2D shadowMap1;
+uniform sampler2D shadowMap2;
+uniform sampler2D shadowMap3;
 
-float ShadowCalculation(vec4 fragPosLightSpace) {
+float ShadowCalculation(vec4 fragPosLightSpace, sampler2D shadowMap, vec3 lightPos) {
     vec3 projCoords = fragPosLightSpace.xyz / fragPosLightSpace.w;
-    
     projCoords = projCoords * 0.5 + 0.5;
     
     if(projCoords.z > 1.0)
         return 0.0;
     
     float closestDepth = texture(shadowMap, projCoords.xy).r;
-    
     float currentDepth = projCoords.z;
     
     vec3 normal = normalize(Normal);
-    vec3 lightDir = normalize(light1.position - FragPos);
+    vec3 lightDir = normalize(lightPos - FragPos);
     float bias = max(0.05 * (1.0 - dot(normal, lightDir)), 0.005);
     
     float shadow = 0.0;
@@ -54,9 +56,7 @@ float ShadowCalculation(vec4 fragPosLightSpace) {
 
 vec3 CalcPointLight(Light light, vec3 normal, vec3 fragPos, vec3 viewDir, float shadow) {
     vec3 lightDir = normalize(light.position - fragPos);
-    
     float diff = max(dot(normal, lightDir), 0.0);
-    
     vec3 reflectDir = reflect(-lightDir, normal);
     float spec = pow(max(dot(viewDir, reflectDir), 0.0), 32.0);
     
@@ -74,12 +74,14 @@ void main() {
     vec3 norm = normalize(Normal);
     vec3 viewDir = normalize(viewPos - FragPos);
     
-    float shadow = ShadowCalculation(FragPosLightSpace);
+    float shadow1 = ShadowCalculation(FragPosLightSpace1, shadowMap1, light1.position);
+    float shadow2 = ShadowCalculation(FragPosLightSpace2, shadowMap2, light2.position);
+    float shadow3 = ShadowCalculation(FragPosLightSpace3, shadowMap3, light3.position);
     
     vec3 result = vec3(0.0);
-    result += CalcPointLight(light1, norm, FragPos, viewDir, shadow);
-    result += CalcPointLight(light2, norm, FragPos, viewDir, 0.0); // A doua luminã fãrã umbre
-    result += CalcPointLight(light3, norm, FragPos, viewDir, 0.0); // A treia luminã fãrã umbre
+    result += CalcPointLight(light1, norm, FragPos, viewDir, shadow1);
+    result += CalcPointLight(light2, norm, FragPos, viewDir, shadow2);
+    result += CalcPointLight(light3, norm, FragPos, viewDir, shadow3);
     
     FragColor = vec4(result, 1.0);
 }
