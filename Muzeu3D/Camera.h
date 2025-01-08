@@ -57,14 +57,14 @@ public:
 
         newPos.y = 3.0f;
 
-        //if (isPositionValid(newPos)) 
+        if (isPositionValid(newPos)) 
         {
             position = newPos;
         }
-       /* std::cout << "Camera position: ("
+        std::cout << "Camera position: ("
             << position.x << ", "
             << position.y << ", "
-            << position.z << ")" << std::endl;*/
+            << position.z << ")" << std::endl;
     }
 
     void processMouse(float xoffset, float yoffset, bool constrainPitch = true) {

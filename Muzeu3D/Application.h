@@ -17,13 +17,11 @@ private:
         glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 3);
         glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
 
-        // Obținem dimensiunile ecranului
         const GLFWvidmode* mode = glfwGetVideoMode(glfwGetPrimaryMonitor());
         if (!mode) {
             throw std::runtime_error("Failed to get video mode");
         }
 
-        // Creează fereastra full screen
         window = glfwCreateWindow(mode->width, mode->height, "Muzeul de istorie Brasov", glfwGetPrimaryMonitor(), nullptr);
         if (!window) {
             glfwTerminate();
@@ -37,7 +35,6 @@ private:
             throw std::runtime_error("Failed to initialize GLEW");
         }
 
-        // Setăm viewport-ul pentru a acoperi întreaga fereastră
         glViewport(0, 0, mode->width, mode->height);
         glEnable(GL_DEPTH_TEST);
 

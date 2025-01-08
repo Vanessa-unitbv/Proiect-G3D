@@ -30,32 +30,29 @@ private:
     std::vector<ShadowMap> shadowMaps;
 
     void setupLights() {
-        // Room 1 - Warm light (Vlad Tepes area)
         light1 = Light(
-            glm::vec3(5.0f, 4.0f, 5.0f),      // Above Vlad
-            glm::vec3(0.2f, 0.15f, 0.1f),       // Warm ambient
-            glm::vec3(0.8f, 0.6f, 0.4f),        // Warm diffuse
-            glm::vec3(1.0f, 0.8f, 0.6f),        // Warm specular
-            1.0f, 0.07f, 0.017f                  // Adjusted attenuation
+            glm::vec3(5.0f, 4.0f, 5.0f),      
+            glm::vec3(0.2f, 0.15f, 0.1f),       
+            glm::vec3(0.8f, 0.6f, 0.4f),        
+            glm::vec3(1.0f, 0.8f, 0.6f),      
+            1.0f, 0.07f, 0.017f                  
         );
 
-        // Room 2 - Cool light (Telescope area)
         light2 = Light(
-            glm::vec3(-4.6f, 4.0f, -4.5f),      // Above telescope
-            glm::vec3(0.1f, 0.15f, 0.2f),       // Cool ambient
-            glm::vec3(0.4f, 0.6f, 0.8f),        // Cool diffuse
-            glm::vec3(0.6f, 0.8f, 1.0f),        // Cool specular
-            1.0f, 0.09f, 0.032f                  // Standard attenuation
+            glm::vec3(-4.6f, 4.0f, -4.5f),     
+            glm::vec3(0.1f, 0.15f, 0.2f),       
+            glm::vec3(0.4f, 0.6f, 0.8f),        
+            glm::vec3(0.6f, 0.8f, 1.0f),        
+            1.0f, 0.09f, 0.032f                 
         );
 
 
-        // Center area - Neutral light
         light3 = Light(
-            glm::vec3(0.0f, 4.0f, 0.0f),        // Higher center position
-            glm::vec3(0.15f),                    // Neutral ambient
-            glm::vec3(0.7f),                     // Neutral diffuse
-            glm::vec3(0.9f),                     // Neutral specular
-            1.0f, 0.045f, 0.0075f                // Wide-reaching attenuation
+            glm::vec3(0.0f, 4.0f, 0.0f),        
+            glm::vec3(0.15f),                 
+            glm::vec3(0.7f),              
+            glm::vec3(0.9f),                 
+            1.0f, 0.045f, 0.0075f                
         );
     }
 
@@ -67,7 +64,7 @@ private:
     glm::mat4 lightSpaceMatrix;
 
     void initShadowMaps() {
-        shadowMaps.resize(3); // Pentru cele 3 lumini
+        shadowMaps.resize(3); 
 
         for (auto& shadowMap : shadowMaps) {
             glGenFramebuffers(1, &shadowMap.depthMapFBO);
@@ -116,7 +113,7 @@ private:
         }
         glBindFramebuffer(GL_FRAMEBUFFER, 0);
     }
-    float rotationAngle = 0.0f; // Variabila pentru a urmări unghiul de rotație
+    float rotationAngle = 0.0f; 
 
     void initMuseum() {
         auto museum = std::make_shared<Model>("../Models/muzeu.obj", "../Models/");
@@ -163,17 +160,17 @@ public:
             "../Shaders/fragment_shader.glsl")),
         lightIndicatorShader(std::make_unique<Shader>("../Shaders/light_indicator_vertex.glsl",
             "../Shaders/light_indicator_fragment.glsl")),
-        light1(glm::vec3(5.0f, 4.0f, 5.0f),      // Above Vlad
-            glm::vec3(0.2f, 0.15f, 0.1f),       // Warm ambient
-            glm::vec3(0.8f, 0.6f, 0.4f),        // Warm diffuse
+        light1(glm::vec3(5.0f, 4.0f, 5.0f),     
+            glm::vec3(0.2f, 0.15f, 0.1f),       
+            glm::vec3(0.8f, 0.6f, 0.4f),        
             glm::vec3(1.0f, 0.8f, 0.6f)),
-        light2(glm::vec3(-4.6f, 4.0f, -4.5f),      // Above telescope
-            glm::vec3(0.1f, 0.15f, 0.2f),       // Cool ambient
-            glm::vec3(0.4f, 0.6f, 0.8f),        // Cool diffuse
+        light2(glm::vec3(-4.6f, 4.0f, -4.5f),      
+            glm::vec3(0.1f, 0.15f, 0.2f),       
+            glm::vec3(0.4f, 0.6f, 0.8f),       
             glm::vec3(0.6f, 0.8f, 1.0f)),
-        light3(glm::vec3(0.0f, 4.0f, 0.0f),        // Higher center position
-            glm::vec3(0.15f),                    // Neutral ambient
-            glm::vec3(0.7f),                     // Neutral diffuse
+        light3(glm::vec3(0.0f, 4.0f, 0.0f),        
+            glm::vec3(0.15f),                    
+            glm::vec3(0.7f),                     
             glm::vec3(0.9f)) {
 
         projection = glm::perspective(glm::radians(45.0f), (float)mode->width / (float)mode->height, 0.1f, 100.0f);
@@ -248,57 +245,57 @@ public:
        
         //ROOM 2
 
-        addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
-            glm::vec3(-2.5f, 2.45f, -0.9f),
-            glm::vec3(0.0f, 50.0f, 0.0f),
-            glm::vec3(0.5f));
+        //addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
+        //    glm::vec3(-2.5f, 2.45f, -0.9f),
+        //    glm::vec3(0.0f, 50.0f, 0.0f),
+        //    glm::vec3(0.5f));
 
-        addModel("../Models/Old_Wooden_Cart/old_wooden_cart.obj", "../Models/Old_Wooden_Cart/",
-            glm::vec3(1.2f, 2.20f, -0.6f),
-            glm::vec3(0.0f, 45.0f, 0.0f),
-            glm::vec3(0.007f));
+        //addModel("../Models/Old_Wooden_Cart/old_wooden_cart.obj", "../Models/Old_Wooden_Cart/",
+        //    glm::vec3(1.2f, 2.20f, -0.6f),
+        //    glm::vec3(0.0f, 45.0f, 0.0f),
+        //    glm::vec3(0.007f));
 
-        addModel("../Models/Sword/sword.obj", "../Models/Sword/",
-            glm::vec3(-1.7f, 2.20f, 0.5f),
-            glm::vec3(0.0f, 131.0f, 0.0f),
-            glm::vec3(1.0f));
+        //addModel("../Models/Sword/sword.obj", "../Models/Sword/",
+        //    glm::vec3(-1.7f, 2.20f, 0.5f),
+        //    glm::vec3(0.0f, 131.0f, 0.0f),
+        //    glm::vec3(1.0f));
 
-        addModel("../Models/Canon/OldShipCannon.obj", "../Models/Canon/",
-            glm::vec3(0.02f, 2.2f, 2.1f),
-            glm::vec3(0.0f, 90.0f, 0.0f),
-            glm::vec3(0.4f));
-        
-        // ROOM 3
+        //addModel("../Models/Canon/OldShipCannon.obj", "../Models/Canon/",
+        //    glm::vec3(0.02f, 2.2f, 2.1f),
+        //    glm::vec3(0.0f, 90.0f, 0.0f),
+        //    glm::vec3(0.4f));
+        //
+        //// ROOM 3
 
-        addModel("../Models/Stand/stand.obj", "../Models/Stand/",
-            glm::vec3(10.15f, 2.20f,5.2f),
-            glm::vec3(0.0f, 176.0f, 0.0f),
-            glm::vec3(0.007f));
+        //addModel("../Models/Stand/stand.obj", "../Models/Stand/",
+        //    glm::vec3(10.15f, 2.20f,5.2f),
+        //    glm::vec3(0.0f, 176.0f, 0.0f),
+        //    glm::vec3(0.007f));
 
-        addModel("../Models/Bran/model.obj", "../Models/Bran/",
-            glm::vec3(4.f, 1.1f, 6.0f),
-             glm::vec3(0.0f, 130.0f, 0.0f),
-             glm::vec3(0.15f));
+        //addModel("../Models/Bran/model.obj", "../Models/Bran/",
+        //    glm::vec3(4.f, 1.1f, 6.0f),
+        //     glm::vec3(0.0f, 130.0f, 0.0f),
+        //     glm::vec3(0.15f));
 
-        addModel("../Models/Stema/model.obj", "../Models/Stema/",
-            glm::vec3(6.22f, 2.8f, 6.27f),
-            glm::vec3(0.0f, 230.0f, 0.0f),
-            glm::vec3(0.02f));
+        //addModel("../Models/Stema/model.obj", "../Models/Stema/",
+        //    glm::vec3(6.22f, 2.8f, 6.27f),
+        //    glm::vec3(0.0f, 230.0f, 0.0f),
+        //    glm::vec3(0.02f));
 
-        addModel("../Models/Medieval_Chest/medieval_chest.obj", "../Models/Medieval_Chest/",
-            glm::vec3(2.034f, 2.40f, 4.34f),
-            glm::vec3(0.0f, -45.0f, 0.0f),
-            glm::vec3(0.0006f));
+        //addModel("../Models/Medieval_Chest/medieval_chest.obj", "../Models/Medieval_Chest/",
+        //    glm::vec3(2.034f, 2.40f, 4.34f),
+        //    glm::vec3(0.0f, -45.0f, 0.0f),
+        //    glm::vec3(0.0006f));
 
-          addModel("../Models/Table/Table.obj", "../Models/Table/",
-              glm::vec3(4.6f, 2.1f, 2.6f),
-              glm::vec3(0.0f, 130.0f, 0.0f),
-              glm::vec3(0.1f));
+        //  addModel("../Models/Table/Table.obj", "../Models/Table/",
+        //      glm::vec3(4.6f, 2.1f, 2.6f),
+        //      glm::vec3(0.0f, 130.0f, 0.0f),
+        //      glm::vec3(0.1f));
 
-          addModel("../Models/Gun/GunMesh.obj", "../Models/Gun/",
-              glm::vec3(3.841f, 2.85f, 2.5f),
-              glm::vec3(0.0f, 130.0f, 0.0f),
-              glm::vec3(0.001f));
+        //  addModel("../Models/Gun/GunMesh.obj", "../Models/Gun/",
+        //      glm::vec3(3.841f, 2.85f, 2.5f),
+        //      glm::vec3(0.0f, 130.0f, 0.0f),
+        //      glm::vec3(0.001f));
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
@@ -389,14 +386,13 @@ public:
             lightEnabled = false;
         }
 
-        rotationAngle += 20.0f * deltaTime; // Rotește cu 20 de grade pe secundă
+        rotationAngle += 20.0f * deltaTime;
         if (rotationAngle >= 360.0f) {
-            rotationAngle -= 360.0f; // Resetează unghiul după o rotație completă
+            rotationAngle -= 360.0f; 
         }
 
-        // Aplică rotația pe modelul VladTepes
         for (auto& model : models) {
-            if (model->getName() == "VladTepes" || model->getName()=="Telescope") { // Presupunem că ai o metodă `getName`
+            if (model->getName() == "VladTepes" || model->getName()=="Telescope") { 
                 model->setRotation(glm::vec3(0.0f, rotationAngle, 0.0f));
             }
         }

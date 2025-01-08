@@ -37,31 +37,26 @@ public:
             std::vector<GLuint> indices;
 
             for (const auto& index : shape.mesh.indices) {
-                // Vertex positions
                 vertices.push_back(attrib.vertices[3 * index.vertex_index + 0]);
                 vertices.push_back(attrib.vertices[3 * index.vertex_index + 1]);
                 vertices.push_back(attrib.vertices[3 * index.vertex_index + 2]);
 
-                // Normals
                 if (index.normal_index >= 0) {
                     vertices.push_back(attrib.normals[3 * index.normal_index + 0]);
                     vertices.push_back(attrib.normals[3 * index.normal_index + 1]);
                     vertices.push_back(attrib.normals[3 * index.normal_index + 2]);
                 }
                 else {
-                    // Add default normal if none exists
                     vertices.push_back(0.0f);
                     vertices.push_back(1.0f);
                     vertices.push_back(0.0f);
                 }
 
-                // Texture coordinates
                 if (index.texcoord_index >= 0) {
                     vertices.push_back(attrib.texcoords[2 * index.texcoord_index + 0]);
                     vertices.push_back(attrib.texcoords[2 * index.texcoord_index + 1]);
                 }
                 else {
-                    // Add default texture coordinates if none exists
                     vertices.push_back(0.0f);
                     vertices.push_back(0.0f);
                 }
@@ -76,7 +71,6 @@ public:
                     std::string texPath = std::string(mtlBaseDir) + material.diffuse_texname;
                     std::cout << "Attempting to load texture from: " << texPath << std::endl;
 
-                    // Check if texture file exists
                     std::ifstream f(texPath.c_str());
                     if (!f.good()) {
                         std::cerr << "Warning: Texture file not found: " << texPath << std::endl;
