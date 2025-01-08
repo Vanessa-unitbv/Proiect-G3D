@@ -1,60 +1,69 @@
 ﻿  Application.cpp
-C:\Proiect-G3D\Muzeu3D\Mesh.h(56,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Shader.h(76,48): warning C4566: character represented by universal-character-name '\u0103' cannot be represented in the current code page (1252)
   (compiling source file 'Application.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(50,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Shader.h(94,48): warning C4566: character represented by universal-character-name '\u0103' cannot be represented in the current code page (1252)
   (compiling source file 'Application.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(51,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Mesh.h(56,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   (compiling source file 'Application.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(55,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Application.h(50,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Application.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(56,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Application.h(51,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Application.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(57,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Application.h(55,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Application.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(58,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Application.h(56,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Application.cpp')
+  
+D:\Facultate\MUZEU3D\Muzeu3D\Application.h(57,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Application.cpp')
+  
+D:\Facultate\MUZEU3D\Muzeu3D\Application.h(58,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Application.cpp')
   
   Camera.cpp
-  Mesh.cpp
-C:\Proiect-G3D\Muzeu3D\Mesh.h(56,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  (compiling source file 'Mesh.cpp')
-  
-  Model.cpp
-C:\Proiect-G3D\Muzeu3D\Mesh.h(56,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  (compiling source file 'Model.cpp')
-  
   Muzeu3D.cpp
-C:\Proiect-G3D\Muzeu3D\Mesh.h(56,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Shader.h(76,48): warning C4566: character represented by universal-character-name '\u0103' cannot be represented in the current code page (1252)
   (compiling source file 'Muzeu3D.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(50,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Shader.h(94,48): warning C4566: character represented by universal-character-name '\u0103' cannot be represented in the current code page (1252)
   (compiling source file 'Muzeu3D.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(51,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Mesh.h(56,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(55,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Application.h(50,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(56,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Application.h(51,21): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(57,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Application.h(55,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
   
-C:\Proiect-G3D\Muzeu3D\Application.h(58,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Application.h(56,23): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Muzeu3D.cpp')
+  
+D:\Facultate\MUZEU3D\Muzeu3D\Application.h(57,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+  (compiling source file 'Muzeu3D.cpp')
+  
+D:\Facultate\MUZEU3D\Muzeu3D\Application.h(58,17): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   (compiling source file 'Muzeu3D.cpp')
   
   Scene.cpp
-C:\Proiect-G3D\Muzeu3D\Mesh.h(56,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+D:\Facultate\MUZEU3D\Muzeu3D\Shader.h(76,48): warning C4566: character represented by universal-character-name '\u0103' cannot be represented in the current code page (1252)
   (compiling source file 'Scene.cpp')
   
-  Texture.cpp
+D:\Facultate\MUZEU3D\Muzeu3D\Shader.h(94,48): warning C4566: character represented by universal-character-name '\u0103' cannot be represented in the current code page (1252)
+  (compiling source file 'Scene.cpp')
+  
+D:\Facultate\MUZEU3D\Muzeu3D\Mesh.h(56,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  (compiling source file 'Scene.cpp')
+  
   Generating Code...
-  Muzeu3D.vcxproj -> C:\Proiect-G3D\x64\Debug\Muzeu3D.exe
+  Muzeu3D.vcxproj -> D:\Facultate\MUZEU3D\x64\Debug\Muzeu3D.exe

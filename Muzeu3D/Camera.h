@@ -10,7 +10,7 @@ private:
     glm::vec3 front;
     glm::vec3 up;
     float yaw, pitch;
-    const float SPEED = 0.05f;
+    const float SPEED = 0.02f;
 
 public:
     Camera(const glm::vec3& pos = glm::vec3(0.0f, 3.0f, 0.0f))
@@ -55,16 +55,16 @@ public:
         if (glfwGetKey(window, GLFW_KEY_D) == GLFW_PRESS)
             newPos += glm::normalize(glm::cross(front, up)) * SPEED;
 
-        newPos.y = 3.0f;
+        newPos.y = 3.1f;
 
         if (isPositionValid(newPos)) 
         {
             position = newPos;
         }
-        std::cout << "Camera position: ("
+       /* std::cout << "Camera position: ("
             << position.x << ", "
             << position.y << ", "
-            << position.z << ")" << std::endl;
+            << position.z << ")" << std::endl; */
     }
 
     void processMouse(float xoffset, float yoffset, bool constrainPitch = true) {

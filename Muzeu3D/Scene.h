@@ -245,57 +245,57 @@ public:
        
         //ROOM 2
 
-        //addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
-        //    glm::vec3(-2.5f, 2.45f, -0.9f),
-        //    glm::vec3(0.0f, 50.0f, 0.0f),
-        //    glm::vec3(0.5f));
+        addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
+            glm::vec3(-2.5f, 2.45f, -0.9f),
+            glm::vec3(0.0f, 50.0f, 0.0f),
+            glm::vec3(0.5f));
 
-        //addModel("../Models/Old_Wooden_Cart/old_wooden_cart.obj", "../Models/Old_Wooden_Cart/",
-        //    glm::vec3(1.2f, 2.20f, -0.6f),
-        //    glm::vec3(0.0f, 45.0f, 0.0f),
-        //    glm::vec3(0.007f));
+        addModel("../Models/Old_Wooden_Cart/old_wooden_cart.obj", "../Models/Old_Wooden_Cart/",
+            glm::vec3(1.2f, 2.20f, -0.6f),
+            glm::vec3(0.0f, 45.0f, 0.0f),
+           glm::vec3(0.007f));
 
-        //addModel("../Models/Sword/sword.obj", "../Models/Sword/",
-        //    glm::vec3(-1.7f, 2.20f, 0.5f),
-        //    glm::vec3(0.0f, 131.0f, 0.0f),
-        //    glm::vec3(1.0f));
+        addModel("../Models/Sword/sword.obj", "../Models/Sword/",
+            glm::vec3(-1.7f, 2.20f, 0.5f),
+           glm::vec3(0.0f, 131.0f, 0.0f),
+            glm::vec3(1.0f));
 
-        //addModel("../Models/Canon/OldShipCannon.obj", "../Models/Canon/",
-        //    glm::vec3(0.02f, 2.2f, 2.1f),
-        //    glm::vec3(0.0f, 90.0f, 0.0f),
-        //    glm::vec3(0.4f));
-        //
-        //// ROOM 3
+        addModel("../Models/Canon/OldShipCannon.obj", "../Models/Canon/",
+            glm::vec3(0.02f, 2.2f, 2.1f),
+            glm::vec3(0.0f, 90.0f, 0.0f),
+           glm::vec3(0.4f));
+        
+        // ROOM 3
 
-        //addModel("../Models/Stand/stand.obj", "../Models/Stand/",
-        //    glm::vec3(10.15f, 2.20f,5.2f),
-        //    glm::vec3(0.0f, 176.0f, 0.0f),
-        //    glm::vec3(0.007f));
+        addModel("../Models/Stand/stand.obj", "../Models/Stand/",
+            glm::vec3(10.15f, 2.20f,5.2f),
+            glm::vec3(0.0f, 176.0f, 0.0f),
+            glm::vec3(0.007f));
 
-        //addModel("../Models/Bran/model.obj", "../Models/Bran/",
-        //    glm::vec3(4.f, 1.1f, 6.0f),
-        //     glm::vec3(0.0f, 130.0f, 0.0f),
-        //     glm::vec3(0.15f));
+        addModel("../Models/Bran/model.obj", "../Models/Bran/",
+            glm::vec3(4.f, 1.1f, 6.0f),
+             glm::vec3(0.0f, 130.0f, 0.0f),
+             glm::vec3(0.15f));
 
-        //addModel("../Models/Stema/model.obj", "../Models/Stema/",
-        //    glm::vec3(6.22f, 2.8f, 6.27f),
-        //    glm::vec3(0.0f, 230.0f, 0.0f),
-        //    glm::vec3(0.02f));
+        addModel("../Models/Stema/model.obj", "../Models/Stema/",
+            glm::vec3(6.22f, 2.8f, 6.27f),
+            glm::vec3(0.0f, 230.0f, 0.0f),
+            glm::vec3(0.02f));
 
-        //addModel("../Models/Medieval_Chest/medieval_chest.obj", "../Models/Medieval_Chest/",
-        //    glm::vec3(2.034f, 2.40f, 4.34f),
-        //    glm::vec3(0.0f, -45.0f, 0.0f),
-        //    glm::vec3(0.0006f));
+        addModel("../Models/Medieval_Chest/medieval_chest.obj", "../Models/Medieval_Chest/",
+            glm::vec3(2.034f, 2.40f, 4.34f),
+            glm::vec3(0.0f, -45.0f, 0.0f),
+            glm::vec3(0.0006f));
 
-        //  addModel("../Models/Table/Table.obj", "../Models/Table/",
-        //      glm::vec3(4.6f, 2.1f, 2.6f),
-        //      glm::vec3(0.0f, 130.0f, 0.0f),
-        //      glm::vec3(0.1f));
+          addModel("../Models/Table/Table.obj", "../Models/Table/",
+              glm::vec3(4.6f, 2.1f, 2.6f),
+              glm::vec3(0.0f, 130.0f, 0.0f),
+              glm::vec3(0.1f));
 
-        //  addModel("../Models/Gun/GunMesh.obj", "../Models/Gun/",
-        //      glm::vec3(3.841f, 2.85f, 2.5f),
-        //      glm::vec3(0.0f, 130.0f, 0.0f),
-        //      glm::vec3(0.001f));
+          addModel("../Models/Gun/GunMesh.obj", "../Models/Gun/",
+              glm::vec3(3.841f, 2.85f, 2.5f),
+              glm::vec3(0.0f, 130.0f, 0.0f),
+              glm::vec3(0.001f));
     }
 
     void addModel(const char* objPath, const char* mtlBaseDir,
