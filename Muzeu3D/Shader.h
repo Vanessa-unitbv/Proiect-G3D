@@ -70,6 +70,16 @@ public:
         glUseProgram(programID);
     }
 
+    void setInt(const std::string& name, int value) {
+        GLint location = glGetUniformLocation(programID, name.c_str());
+        if (location == -1) {
+            std::cerr << "Uniform " << name << " nu a fost găsit în shader!" << std::endl;
+        }
+        else {
+            glUniform1i(location, value);
+        }
+    }
+
     void setFloat(const std::string& name, float value) {
         glUniform1f(glGetUniformLocation(programID, name.c_str()), value);
     }

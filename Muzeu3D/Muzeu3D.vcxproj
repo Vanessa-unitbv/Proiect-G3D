@@ -162,6 +162,8 @@
     <Text Include="..\Shaders\vertex_shader.glsl" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="..\Shaders\shadow_map_fragment.glsl" />
+    <None Include="..\Shaders\shadow_map_vertex.glsl" />
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
