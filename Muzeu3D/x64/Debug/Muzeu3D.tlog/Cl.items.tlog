@@ -1,11 +1,11 @@
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\external\tinyobjloader-release\tiny_obj_loader.cpp;C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\x64\Debug\tiny_obj_loader.obj
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Application.cpp;C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\x64\Debug\Application.obj
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Camera.cpp;C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\x64\Debug\Camera.obj
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Light.cpp;C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\x64\Debug\Light.obj
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Mesh.cpp;C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\x64\Debug\Mesh.obj
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Model.cpp;C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\x64\Debug\Model.obj
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Muzeu3D.cpp;C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\x64\Debug\Muzeu3D.obj
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Scene.cpp;C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\x64\Debug\Scene.obj
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Shader.cpp;C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\x64\Debug\Shader.obj
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\stb_image.cpp;C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\x64\Debug\stb_image.obj
-C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\Texture.cpp;C:\Users\40720\OneDrive\Desktop\FACULTATE\AN II\Grafica 3D\Proiect-G3D\Muzeu3D\x64\Debug\Texture.obj
+C:\Proiect-G3D\external\tinyobjloader-release\tiny_obj_loader.cpp;C:\Proiect-G3D\Muzeu3D\x64\Debug\tiny_obj_loader.obj
+C:\Proiect-G3D\Muzeu3D\Application.cpp;C:\Proiect-G3D\Muzeu3D\x64\Debug\Application.obj
+C:\Proiect-G3D\Muzeu3D\Camera.cpp;C:\Proiect-G3D\Muzeu3D\x64\Debug\Camera.obj
+C:\Proiect-G3D\Muzeu3D\Light.cpp;C:\Proiect-G3D\Muzeu3D\x64\Debug\Light.obj
+C:\Proiect-G3D\Muzeu3D\Mesh.cpp;C:\Proiect-G3D\Muzeu3D\x64\Debug\Mesh.obj
+C:\Proiect-G3D\Muzeu3D\Model.cpp;C:\Proiect-G3D\Muzeu3D\x64\Debug\Model.obj
+C:\Proiect-G3D\Muzeu3D\Muzeu3D.cpp;C:\Proiect-G3D\Muzeu3D\x64\Debug\Muzeu3D.obj
+C:\Proiect-G3D\Muzeu3D\Scene.cpp;C:\Proiect-G3D\Muzeu3D\x64\Debug\Scene.obj
+C:\Proiect-G3D\Muzeu3D\Shader.cpp;C:\Proiect-G3D\Muzeu3D\x64\Debug\Shader.obj
+C:\Proiect-G3D\Muzeu3D\stb_image.cpp;C:\Proiect-G3D\Muzeu3D\x64\Debug\stb_image.obj
+C:\Proiect-G3D\Muzeu3D\Texture.cpp;C:\Proiect-G3D\Muzeu3D\x64\Debug\Texture.obj

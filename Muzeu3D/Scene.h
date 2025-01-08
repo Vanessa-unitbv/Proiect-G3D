@@ -25,7 +25,7 @@ private:
     void setupLights() {
         // Room 1 - Warm light (Vlad Tepes area)
         light1 = Light(
-            glm::vec3(6.69f, 4.5f, 4.95f),      // Above Vlad
+            glm::vec3(5.0f, 4.0f, 5.0f),      // Above Vlad
             glm::vec3(0.2f, 0.15f, 0.1f),       // Warm ambient
             glm::vec3(0.8f, 0.6f, 0.4f),        // Warm diffuse
             glm::vec3(1.0f, 0.8f, 0.6f),        // Warm specular
@@ -34,16 +34,17 @@ private:
 
         // Room 2 - Cool light (Telescope area)
         light2 = Light(
-            glm::vec3(-4.1f, 4.0f, -4.8f),      // Above telescope
+            glm::vec3(-4.6f, 4.0f, -4.5f),      // Above telescope
             glm::vec3(0.1f, 0.15f, 0.2f),       // Cool ambient
             glm::vec3(0.4f, 0.6f, 0.8f),        // Cool diffuse
             glm::vec3(0.6f, 0.8f, 1.0f),        // Cool specular
             1.0f, 0.09f, 0.032f                  // Standard attenuation
         );
 
+
         // Center area - Neutral light
         light3 = Light(
-            glm::vec3(0.0f, 5.0f, 0.0f),        // Higher center position
+            glm::vec3(0.0f, 4.0f, 0.0f),        // Higher center position
             glm::vec3(0.15f),                    // Neutral ambient
             glm::vec3(0.7f),                     // Neutral diffuse
             glm::vec3(0.9f),                     // Neutral specular
@@ -112,7 +113,7 @@ private:
 
 
 
-    float vladRotationAngle = 0.0f; // Variabila pentru a urmări unghiul de rotație
+    float rotationAngle = 0.0f; // Variabila pentru a urmări unghiul de rotație
 
     void initMuseum() {
         auto museum = std::make_shared<Model>("../Models/muzeu.obj", "../Models/");
@@ -159,18 +160,18 @@ public:
             "../Shaders/fragment_shader.glsl")),
         lightIndicatorShader(std::make_unique<Shader>("../Shaders/light_indicator_vertex.glsl",
             "../Shaders/light_indicator_fragment.glsl")),
-        light1(glm::vec3(4.3f, 4.0f, 4.2f),
-            glm::vec3(0.1f, 0.1f, 0.1f),
-            glm::vec3(2.0f, 2.0f, 2.0f),
-            glm::vec3(2.0f, 2.0f, 2.0f)),
-        light2(glm::vec3(-4.3f, 4.0f, -4.2f),
-            glm::vec3(0.1f, 0.1f, 0.1f),
-            glm::vec3(2.0f, 2.0f, 2.0f),
-            glm::vec3(2.0f, 2.0f, 2.0f)),
-        light3(glm::vec3(0.0f, 4.0f, 0.0f),
-            glm::vec3(0.1f, 0.1f, 0.1f),
-            glm::vec3(2.0f, 2.0f, 2.0f),
-            glm::vec3(2.0f, 2.0f, 2.0f)) {
+        light1(glm::vec3(5.0f, 4.0f, 5.0f),      // Above Vlad
+            glm::vec3(0.2f, 0.15f, 0.1f),       // Warm ambient
+            glm::vec3(0.8f, 0.6f, 0.4f),        // Warm diffuse
+            glm::vec3(1.0f, 0.8f, 0.6f)),
+        light2(glm::vec3(-4.6f, 4.0f, -4.5f),      // Above telescope
+            glm::vec3(0.1f, 0.15f, 0.2f),       // Cool ambient
+            glm::vec3(0.4f, 0.6f, 0.8f),        // Cool diffuse
+            glm::vec3(0.6f, 0.8f, 1.0f)),
+        light3(glm::vec3(0.0f, 4.0f, 0.0f),        // Higher center position
+            glm::vec3(0.15f),                    // Neutral ambient
+            glm::vec3(0.7f),                     // Neutral diffuse
+            glm::vec3(0.9f)) {
 
         projection = glm::perspective(glm::radians(45.0f), (float)mode->width / (float)mode->height, 0.1f, 100.0f);
         initMuseum();
@@ -241,15 +242,10 @@ public:
             glm::vec3(-4.9f, 3.08f, -2.9f),
             glm::vec3(0.0f, 135.0f, 0.0f),
             glm::vec3(0.2f));
-
-        addModel("../Models/Lamp/lamp.obj", "../Models/Lamp/",
-            glm::vec3(-3.95f, 3.50f, -1.15f),
-            glm::vec3(0.0f, 131.0f, 0.0f),
-            glm::vec3(0.3f));
        
         //ROOM 2
 
-        addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
+       /* addModel("../Models/Calaret/calaret.obj", "../Models/Calaret/",
             glm::vec3(-2.5f, 2.45f, -0.9f),
             glm::vec3(0.0f, 50.0f, 0.0f),
             glm::vec3(0.5f));
@@ -267,11 +263,11 @@ public:
         addModel("../Models/Canon/OldShipCannon.obj", "../Models/Canon/",
             glm::vec3(0.02f, 2.2f, 2.1f),
             glm::vec3(0.0f, 90.0f, 0.0f),
-            glm::vec3(0.4f));
+            glm::vec3(0.4f));*/
         
         // ROOM 3
 
-        addModel("../Models/Stand/stand.obj", "../Models/Stand/",
+        /*addModel("../Models/Stand/stand.obj", "../Models/Stand/",
             glm::vec3(10.15f, 2.20f,5.2f),
             glm::vec3(0.0f, 176.0f, 0.0f),
             glm::vec3(0.007f));
@@ -299,7 +295,7 @@ public:
           addModel("../Models/Gun/GunMesh.obj", "../Models/Gun/",
               glm::vec3(3.841f, 2.85f, 2.5f),
               glm::vec3(0.0f, 130.0f, 0.0f),
-              glm::vec3(0.001f));
+              glm::vec3(0.001f));*/
 
               
 
@@ -402,15 +398,15 @@ public:
             lightEnabled = false;
         }
 
-        vladRotationAngle += 50.0f * deltaTime; // Rotește cu 50 de grade pe secundă
-        if (vladRotationAngle >= 360.0f) {
-            vladRotationAngle -= 360.0f; // Resetează unghiul după o rotație completă
+        rotationAngle += 20.0f * deltaTime; // Rotește cu 20 de grade pe secundă
+        if (rotationAngle >= 360.0f) {
+            rotationAngle -= 360.0f; // Resetează unghiul după o rotație completă
         }
 
         // Aplică rotația pe modelul VladTepes
         for (auto& model : models) {
             if (model->getName() == "VladTepes" || model->getName()=="Telescope") { // Presupunem că ai o metodă `getName`
-                model->setRotation(glm::vec3(0.0f, vladRotationAngle, 0.0f));
+                model->setRotation(glm::vec3(0.0f, rotationAngle, 0.0f));
             }
         }
     }
